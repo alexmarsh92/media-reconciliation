@@ -3,8 +3,7 @@
 **Goal:** Demo-ready prototype for Gainshare internal teams (target Thu Oct 22, 2026) to test demand for
 AI media reconciliation (IOs vs invoices vs delivery reports). Synthetic data only.
 
-**Repo:** TBD. **Pending:** create a new repo in Alex's personal GitHub account and push. GitHub auth is still in progress.
-The local git repo is initialized and committed and ready to push (`git remote add origin <url> && git push -u origin main`).
+**Repo:** https://github.com/alexmarsh92/media-reconciliation · PR: https://github.com/alexmarsh92/media-reconciliation/pull/1
 
 ## Tasks
 | Task | Status |
@@ -21,4 +20,7 @@ The local git repo is initialized and committed and ready to push (`git remote a
 | Eval harness + time-saved model | Done |
 | README with eval results | Done |
 | Tests (pytest) | Done (9 passing) |
-| GitHub repo create + push | **Pending (blocked on GitHub auth)** |
+| GitHub repo create + push | Done |
+| PR for review | Open — [PR #1](https://github.com/alexmarsh92/media-reconciliation/pull/1) |
+| Code gardener 2026-10-16: removed dead schema code | Merged — [PR #2](https://github.com/alexmarsh92/media-reconciliation/pull/2) |
+| Overnight autoresearch (hard DEV) best exp 335 | Open — [PR #3](https://github.com/alexmarsh92/media-reconciliation/pull/3); DEV 0.836→0.922, held-out flat 0.689 |

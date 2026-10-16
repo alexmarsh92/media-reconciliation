@@ -1,0 +1,10 @@
+{
+  "best_seq": 4,
+  "commit": "exp-335",
+  "experiment_id": 335,
+  "plain_words_change": "min_score 0.3833->0.3534; w_name 0.8900->0.8111; w_campaign 0.2739->0.2939; w_date 0.3328->0.1655; overbill_tol 0.0106->0.0053; vendor_jaccard_min 0.6079->0.6430; alloc_rel_tol 0.0200->0.0198; alloc_abs_tol 1.0000->5.9028; expand+olv=online",
+  "dev_old": 0.90924,
+  "dev_new": 0.922031,
+  "heldout_score": null,
+  "timestamp": "2026-10-16T03:37:02.206830+00:00"
+}
