@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "media-recon"
+version = "0.1.0"
+description = "AI media reconciliation prototype: IOs vs invoices vs delivery reports (synthetic data)"
+requires-python = ">=3.10"
+dependencies = [
+  "pandas==3.0.6",
+  "openpyxl==3.1.5",
+  "reportlab==5.0.1",
+  "pypdf==6.20.1",
+]
+
+[project.optional-dependencies]
+demo = ["streamlit==1.66.0"]
+dev = ["pytest==9.1.1"]
+
+[project.scripts]
+media-recon = "media_recon.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["media_recon*"]
