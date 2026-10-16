@@ -43,25 +43,32 @@ HOURS = float(os.environ.get("AUTORESEARCH_HOURS", "8"))
 CHECKPOINT_EVERY_KEPT = int(os.environ.get("AUTORESEARCH_CKPT_KEPT", "3"))
 CHECKPOINT_EVERY_EXP = int(os.environ.get("AUTORESEARCH_CKPT_EXP", "15"))
 STALL_MINUTES = float(os.environ.get("AUTORESEARCH_STALL_MIN", "45"))
-DEV_SEEDS = (1, 2, 3, 4, 5)
-DEV_NOISE = 0.75
+from media_recon.generate.dev_hard import DEV_SEEDS  # noqa: E402  hard DEV split
+DEV_NOISE = None  # unused; difficulty baked into dev_hard
 
+# Candidate tables are derived from the DEV vocabulary + generic industry abbreviations ONLY.
+# Held-out (data/adversarial) vendor names/abbreviations were deliberately removed to avoid leakage.
 EXPAND_CANDIDATES = {
-    "mob": "mobile", "mobile": "mobile", "dsktp": "desktop", "dt": "desktop",
-    "prosp": "prospecting", "prospecting": "prospecting", "rtg": "retargeting",
-    "re-tgt": "retargeting", "retargeting": "retargeting", "vid": "video",
-    "disp": "display", "prem": "premium", "srch": "search", "ctx": "contextual",
-    "ntwk": "network", "aud": "audience", "fb": "meta", "ig": "instagram",
-    "yt": "youtube", "ctv": "ctv", "bumper": "bumper", "olv": "online",
+    "mob": "mobile", "dt": "desktop", "prsp": "prospecting", "prosp": "prospecting",
+    "rtg": "retargeting", "vid": "video", "awr": "awareness", "conv": "conversion",
+    "cnsd": "consideration", "spons": "sponsored", "gen": "generic", "hp": "homepage",
+    "ntwk": "network", "ntv": "native", "cat": "catalog", "shop": "shopping",
+    "tko": "takeover", "coll": "collection", "comm": "commercials", "disp": "display",
+    "prem": "premium", "srch": "search", "aud": "audience", "ctv": "ctv", "olv": "online",
 }
 VENDOR_CANDIDATES = {
-    "facebook ads": "meta platforms", "fb ads": "meta platforms",
-    "meta platforms, inc.": "meta platforms", "meta": "meta platforms",
-    "adwords": "google ads", "google ads llc": "google ads", "google": "google ads",
-    "ttd": "the trade desk", "thetradedesk": "the trade desk", "trade desk": "the trade desk",
-    "amazon dsp": "amazon advertising", "amazon ads": "amazon advertising", "ams": "amazon advertising",
-    "hulu": "hulu ad manager", "disney hulu ads": "hulu ad manager",
-    "spotify ads": "spotify advertising", "spotify": "spotify advertising",
+    "tiktok": "tiktok for business", "tiktok ads": "tiktok for business", "tik tok": "tiktok for business",
+    "bytedance ads": "tiktok for business", "bytedance": "tiktok for business",
+    "snapchat": "snap", "snap ads": "snap", "snap inc.": "snap",
+    "pinterest inc": "pinterest", "pinterest ads": "pinterest", "pintrest": "pinterest",
+    "linkedin": "linkedin marketing solutions", "linkedin ads": "linkedin marketing solutions",
+    "li marketing": "linkedin marketing solutions",
+    "reddit inc": "reddit", "reddit": "reddit",
+    "bing ads": "microsoft", "bing": "microsoft", "microsoft ads": "microsoft", "msft advertising": "microsoft",
+    "msft": "microsoft",
+    "yahoo": "yahoo dsp", "yahoo advertising": "yahoo dsp", "verizon media dsp": "yahoo dsp",
+    "verizon media": "yahoo dsp",
+    "roku": "roku", "roku ads": "roku", "the roku channel": "roku",
 }
 
 
@@ -222,7 +229,7 @@ def refresh_morning(baseline: dict, best: dict, best_change: str, heldout_hist: 
     lines += [
         "",
         "## How to read this",
-        "- DEV is the selection signal (messy noise=0.75).",
+        "- DEV is the selection signal (hard DEV split: generate/dev_hard.py, seeds 424201-424205).",
         "- Held-out adversarial is scored at checkpoints only and must not guide keeps.",
         "- If DEV rises while held-out falls → see `ALERT_OVERFIT`.",
         "",

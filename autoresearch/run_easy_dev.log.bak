@@ -1,0 +1,129 @@
+2026-10-16T02:21:14.809875+00:00 START pid=105916 hours=8.0 end≈2026-10-16T10:21:14.809816+00:00
+2026-10-16T02:21:14.809875+00:00 START pid=105916 hours=8.0 end≈2026-10-16T10:21:14.809816+00:00
+2026-10-16T02:21:15.846291+00:00 BASELINE composite=0.761168 MR=0.830 ER=0.818 FP=0.660
+2026-10-16T02:21:15.846291+00:00 BASELINE composite=0.761168 MR=0.830 ER=0.818 FP=0.660
+2026-10-16T02:21:15.846538+00:00 NEW_BEST seq=0 exp=0 0.7612->0.7612 :: baseline
+2026-10-16T02:21:15.846538+00:00 NEW_BEST seq=0 exp=0 0.7612->0.7612 :: baseline
+2026-10-16T02:21:17.693130+00:00 NEW_BEST seq=1 exp=2 0.7612->0.9688 :: min_score 0.4500->0.4379; w_name 0.7000->0.7415; w_campaign 0.1500->0.2680; soft_vendor->False; vendor_jaccard_min 0.5500->0.6364; expand+olv=online; alias+amazon ads
+2026-10-16T02:21:17.693130+00:00 NEW_BEST seq=1 exp=2 0.7612->0.9688 :: min_score 0.4500->0.4379; w_name 0.7000->0.7415; w_campaign 0.1500->0.2680; soft_vendor->False; vendor_jaccard_min 0.5500->0.6364; expand+olv=online; alias+amazon ads
+2026-10-16T02:21:17.693241+00:00 exp 2 kept=True dev=0.968787 best=0.968787 :: min_score 0.4500->0.4379; w_name 0.7000->0.7415; w_campaign 0.1500->0.2680; soft_vendor->False; vendor_jaccard_min 0.5500->0.6364; expand+olv=online; alias+amazon ads
+2026-10-16T02:21:17.693241+00:00 exp 2 kept=True dev=0.968787 best=0.968787 :: min_score 0.4500->0.4379; w_name 0.7000->0.7415; w_campaign 0.1500->0.2680; soft_vendor->False; vendor_jaccard_min 0.5500->0.6364; expand+olv=online; alias+amazon ads
+2026-10-16T02:21:20.148939+00:00 exp 5 kept=False dev=0.968787 best=0.968787 :: min_score 0.4379->0.4380
+2026-10-16T02:21:20.148939+00:00 exp 5 kept=False dev=0.968787 best=0.968787 :: min_score 0.4379->0.4380
+2026-10-16T02:21:20.961296+00:00 NEW_BEST seq=2 exp=6 0.9688->0.9878 :: min_score 0.4379->0.4345
+2026-10-16T02:21:20.961296+00:00 NEW_BEST seq=2 exp=6 0.9688->0.9878 :: min_score 0.4379->0.4345
+2026-10-16T02:21:20.961380+00:00 exp 6 kept=True dev=0.987785 best=0.987785 :: min_score 0.4379->0.4345
+2026-10-16T02:21:20.961380+00:00 exp 6 kept=True dev=0.987785 best=0.987785 :: min_score 0.4379->0.4345
+2026-10-16T02:21:24.493375+00:00 exp 10 kept=False dev=0.987785 best=0.987785 :: rate_tol 0.0050->0.0160
+2026-10-16T02:21:24.493375+00:00 exp 10 kept=False dev=0.987785 best=0.987785 :: rate_tol 0.0050->0.0160
+2026-10-16T02:21:26.468882+00:00 checkpoint error: 'flag_precision'
+2026-10-16T02:21:26.468882+00:00 checkpoint error: 'flag_precision'
+2026-10-16T02:21:26.469655+00:00 ALERT_STALL: held-out checkpoint failed exp 12: 'flag_precision'
+Traceback (most recent call last):
+  File "/workspace/projects/media-reconciliation/autoresearch/loop.py", line 314, in main
+    entry = {"exp_id": exp_id, **{k: h[k] for k in
+                                     ~^^^
+KeyError: 'flag_precision'
+
+2026-10-16T02:21:26.469655+00:00 ALERT_STALL: held-out checkpoint failed exp 12: 'flag_precision'
+Traceback (most recent call last):
+  File "/workspace/projects/media-reconciliation/autoresearch/loop.py", line 314, in main
+    entry = {"exp_id": exp_id, **{k: h[k] for k in
+                                     ~^^^
+KeyError: 'flag_precision'
+
+2026-10-16T02:21:26.469926+00:00 NEW_BEST seq=3 exp=12 0.9878->1.0000 :: min_score 0.4345->0.3819; w_name 0.7415->0.8900; w_campaign 0.2680->0.2739; w_date 0.1500->0.3328; underdelivery_pct 0.9000->0.9005; overbill_tol 0.0200->0.0106; rate_tol 0.0050->0.0053; expand+aud=audience
+2026-10-16T02:21:26.469926+00:00 NEW_BEST seq=3 exp=12 0.9878->1.0000 :: min_score 0.4345->0.3819; w_name 0.7415->0.8900; w_campaign 0.2680->0.2739; w_date 0.1500->0.3328; underdelivery_pct 0.9000->0.9005; overbill_tol 0.0200->0.0106; rate_tol 0.0050->0.0053; expand+aud=audience
+2026-10-16T02:21:26.470014+00:00 exp 12 kept=True dev=1.000000 best=1.000000 :: min_score 0.4345->0.3819; w_name 0.7415->0.8900; w_campaign 0.2680->0.2739; w_date 0.1500->0.3328; underdelivery_pct 0.9000->0.9005; overbill_tol 0.0200->0.0106; rate_tol 0.0050->0.0053; expand+aud=audience
+2026-10-16T02:21:26.470014+00:00 exp 12 kept=True dev=1.000000 best=1.000000 :: min_score 0.4345->0.3819; w_name 0.7415->0.8900; w_campaign 0.2680->0.2739; w_date 0.1500->0.3328; underdelivery_pct 0.9000->0.9005; overbill_tol 0.0200->0.0106; rate_tol 0.0050->0.0053; expand+aud=audience
+2026-10-16T02:21:29.272658+00:00 checkpoint error: 'flag_precision'
+2026-10-16T02:21:29.272658+00:00 checkpoint error: 'flag_precision'
+2026-10-16T02:21:29.273126+00:00 ALERT_STALL: held-out checkpoint failed exp 15: 'flag_precision'
+Traceback (most recent call last):
+  File "/workspace/projects/media-reconciliation/autoresearch/loop.py", line 314, in main
+    entry = {"exp_id": exp_id, **{k: h[k] for k in
+                                     ~^^^
+KeyError: 'flag_precision'
+
+2026-10-16T02:21:29.273126+00:00 ALERT_STALL: held-out checkpoint failed exp 15: 'flag_precision'
+Traceback (most recent call last):
+  File "/workspace/projects/media-reconciliation/autoresearch/loop.py", line 314, in main
+    entry = {"exp_id": exp_id, **{k: h[k] for k in
+                                     ~^^^
+KeyError: 'flag_precision'
+
+2026-10-16T02:21:29.273367+00:00 exp 15 kept=False dev=0.968787 best=1.000000 :: min_score 0.3819->0.4366; w_name 0.8900->0.9000; w_date 0.3328->0.3500; rate_tol 0.0053->0.0114; vendor_jaccard_min 0.6364->0.7411; expand+mobile=mobile
+2026-10-16T02:21:29.273367+00:00 exp 15 kept=False dev=0.968787 best=1.000000 :: min_score 0.3819->0.4366; w_name 0.8900->0.9000; w_date 0.3328->0.3500; rate_tol 0.0053->0.0114; vendor_jaccard_min 0.6364->0.7411; expand+mobile=mobile
+2026-10-16T02:21:33.717566+00:00 exp 20 kept=False dev=1.000000 best=1.000000 :: overbill_tol 0.0106->0.0050
+2026-10-16T02:21:33.717566+00:00 exp 20 kept=False dev=1.000000 best=1.000000 :: overbill_tol 0.0106->0.0050
+2026-10-16T02:21:37.964298+00:00 exp 25 kept=False dev=1.000000 best=1.000000 :: w_name 0.8900->0.9000; w_campaign 0.2739->0.2945; w_date 0.3328->0.2787
+2026-10-16T02:21:37.964298+00:00 exp 25 kept=False dev=1.000000 best=1.000000 :: w_name 0.8900->0.9000; w_campaign 0.2739->0.2945; w_date 0.3328->0.2787
+2026-10-16T02:21:42.281451+00:00 checkpoint error: 'flag_precision'
+2026-10-16T02:21:42.281451+00:00 checkpoint error: 'flag_precision'
+2026-10-16T02:21:42.281837+00:00 ALERT_STALL: held-out checkpoint failed exp 30: 'flag_precision'
+Traceback (most recent call last):
+  File "/workspace/projects/media-reconciliation/autoresearch/loop.py", line 314, in main
+    entry = {"exp_id": exp_id, **{k: h[k] for k in
+                                     ~^^^
+KeyError: 'flag_precision'
+
+2026-10-16T02:21:42.281837+00:00 ALERT_STALL: held-out checkpoint failed exp 30: 'flag_precision'
+Traceback (most recent call last):
+  File "/workspace/projects/media-reconciliation/autoresearch/loop.py", line 314, in main
+    entry = {"exp_id": exp_id, **{k: h[k] for k in
+                                     ~^^^
+KeyError: 'flag_precision'
+
+2026-10-16T02:21:42.282029+00:00 exp 30 kept=False dev=1.000000 best=1.000000 :: min_score 0.3819->0.3720
+2026-10-16T02:21:42.282029+00:00 exp 30 kept=False dev=1.000000 best=1.000000 :: min_score 0.3819->0.3720
+2026-10-16T02:21:46.471506+00:00 exp 35 kept=False dev=1.000000 best=1.000000 :: w_name 0.8900->0.8499; w_campaign 0.2739->0.3262; w_date 0.3328->0.3477
+2026-10-16T02:21:46.471506+00:00 exp 35 kept=False dev=1.000000 best=1.000000 :: w_name 0.8900->0.8499; w_campaign 0.2739->0.3262; w_date 0.3328->0.3477
+2026-10-16T02:21:50.548514+00:00 exp 40 kept=False dev=1.000000 best=1.000000 :: rate_tol 0.0053->0.0010
+2026-10-16T02:21:50.548514+00:00 exp 40 kept=False dev=1.000000 best=1.000000 :: rate_tol 0.0053->0.0010
+2026-10-16T02:21:53.519481+00:00 signal 15 — will stop after current experiment
+2026-10-16T02:21:53.519481+00:00 signal 15 — will stop after current experiment
+2026-10-16T02:21:54.101930+00:00 DONE experiments=44 best=1.000000 baseline=0.761168
+2026-10-16T02:21:54.101930+00:00 DONE experiments=44 best=1.000000 baseline=0.761168
+2026-10-16T02:21:57.356701+00:00 START pid=106475 hours=8.0 end≈2026-10-16T10:21:57.356666+00:00
+2026-10-16T02:21:58.268674+00:00 BASELINE composite=1.000000 MR=1.000 ER=1.000 FP=1.000
+2026-10-16T02:21:58.268961+00:00 NEW_BEST seq=0 exp=0 1.0000->1.0000 :: baseline
+2026-10-16T02:22:03.094819+00:00 exp 5 kept=False dev=1.000000 best=1.000000 :: min_score 0.3819->0.3820
+2026-10-16T02:22:07.416577+00:00 exp 10 kept=False dev=1.000000 best=1.000000 :: rate_tol 0.0053->0.0163
+2026-10-16T02:22:11.944373+00:00 CHECKPOINT exp=15 heldout=0.659660
+2026-10-16T02:22:11.944799+00:00 exp 15 kept=False dev=0.968787 best=1.000000 :: min_score 0.3819->0.4366; w_name 0.8900->0.9000; w_date 0.3328->0.3500; rate_tol 0.0053->0.0114; vendor_jaccard_min 0.6364->0.7411; expand+mobile=mobile
+2026-10-16T02:22:16.521056+00:00 exp 20 kept=False dev=1.000000 best=1.000000 :: overbill_tol 0.0106->0.0050
+2026-10-16T02:22:20.785992+00:00 exp 25 kept=False dev=1.000000 best=1.000000 :: w_name 0.8900->0.9000; w_campaign 0.2739->0.2945; w_date 0.3328->0.2787
+2026-10-16T02:22:22.159162+00:00 signal 15 — will stop after current experiment
+2026-10-16T02:22:22.485172+00:00 DONE experiments=27 best=1.000000 baseline=1.000000
+2026-10-16T02:22:28.069652+00:00 START pid=106801 hours=8.0 end≈2026-10-16T10:22:28.069618+00:00
+2026-10-16T02:22:29.575092+00:00 BASELINE composite=0.995831 MR=0.996 ER=1.000 FP=0.991
+2026-10-16T02:22:29.575471+00:00 NEW_BEST seq=0 exp=0 0.9958->0.9958 :: baseline
+2026-10-16T02:22:37.822174+00:00 exp 5 kept=False dev=0.995831 best=0.995831 :: min_score 0.3819->0.3820
+2026-10-16T02:22:45.367657+00:00 exp 10 kept=False dev=0.995831 best=0.995831 :: rate_tol 0.0053->0.0163
+2026-10-16T02:22:48.140849+00:00 NEW_BEST seq=1 exp=12 0.9958->1.0000 :: min_score 0.3819->0.3293; w_name 0.8900->0.8900; w_campaign 0.2739->0.2798; w_date 0.3328->0.3328; underdelivery_pct 0.9005->0.9010; overbill_tol 0.0106->0.0050; rate_tol 0.0053->0.0056; expand+aud=audience
+2026-10-16T02:22:48.140952+00:00 exp 12 kept=True dev=1.000000 best=1.000000 :: min_score 0.3819->0.3293; w_name 0.8900->0.8900; w_campaign 0.2739->0.2798; w_date 0.3328->0.3328; underdelivery_pct 0.9005->0.9010; overbill_tol 0.0106->0.0050; rate_tol 0.0053->0.0056; expand+aud=audience
+2026-10-16T02:22:52.598178+00:00 CHECKPOINT exp=15 heldout=0.659660
+2026-10-16T02:22:52.598476+00:00 exp 15 kept=False dev=0.995831 best=1.000000 :: min_score 0.3293->0.3840; w_name 0.8900->0.9000; w_date 0.3328->0.3500; rate_tol 0.0056->0.0117; vendor_jaccard_min 0.6364->0.7411; expand+mobile=mobile
+2026-10-16T02:23:00.193749+00:00 exp 20 kept=False dev=1.000000 best=1.000000 :: overbill_tol 0.0050->0.0050
+2026-10-16T02:23:07.794932+00:00 exp 25 kept=False dev=1.000000 best=1.000000 :: w_name 0.8900->0.9000; w_campaign 0.2798->0.3004; w_date 0.3328->0.2787
+2026-10-16T02:23:15.794049+00:00 CHECKPOINT exp=30 heldout=0.640000
+2026-10-16T02:23:15.794425+00:00 exp 30 kept=False dev=1.000000 best=1.000000 :: min_score 0.3293->0.3194
+2026-10-16T02:23:23.135176+00:00 exp 35 kept=False dev=1.000000 best=1.000000 :: w_name 0.8900->0.8499; w_campaign 0.2798->0.3321; w_date 0.3328->0.3477
+2026-10-16T02:23:30.171105+00:00 exp 40 kept=False dev=1.000000 best=1.000000 :: rate_tol 0.0056->0.0010
+2026-10-16T02:23:37.287370+00:00 CHECKPOINT exp=45 heldout=0.640000
+2026-10-16T02:23:37.287603+00:00 exp 45 kept=False dev=1.000000 best=1.000000 :: expand+vid=video
+2026-10-16T02:23:44.635409+00:00 exp 50 kept=False dev=1.000000 best=1.000000 :: min_score 0.3293->0.3182
+2026-10-16T02:23:51.841887+00:00 exp 55 kept=False dev=1.000000 best=1.000000 :: overbill_tol 0.0050->0.0050
+2026-10-16T02:23:59.056647+00:00 CHECKPOINT exp=60 heldout=0.640000
+2026-10-16T02:23:59.056872+00:00 exp 60 kept=False dev=1.000000 best=1.000000 :: expand+rtg=retargeting
+2026-10-16T02:24:05.843910+00:00 exp 65 kept=False dev=1.000000 best=1.000000 :: alias+thetradedesk
+2026-10-16T02:24:12.874123+00:00 exp 70 kept=False dev=1.000000 best=1.000000 :: min_score 0.3293->0.3451; underdelivery_pct 0.9010->0.9319; vendor_jaccard_min 0.6364->0.5517; alias+disney hulu ads
+2026-10-16T02:24:20.639645+00:00 CHECKPOINT exp=75 heldout=0.640000
+2026-10-16T02:24:20.639900+00:00 exp 75 kept=False dev=1.000000 best=1.000000 :: vendor_jaccard_min 0.6364->0.6346
+2026-10-16T02:24:27.600810+00:00 exp 80 kept=False dev=1.000000 best=1.000000 :: rate_tol 0.0056->0.0121
+2026-10-16T02:24:34.815422+00:00 exp 85 kept=False dev=0.995831 best=1.000000 :: w_name 0.8900->0.9000; w_campaign 0.2798->0.2689; w_date 0.3328->0.2373
+2026-10-16T02:24:41.620885+00:00 CHECKPOINT exp=90 heldout=0.640000
+2026-10-16T02:24:41.621148+00:00 exp 90 kept=False dev=1.000000 best=1.000000 :: overbill_tol 0.0050->0.0138
+2026-10-16T02:24:48.396523+00:00 exp 95 kept=False dev=0.665781 best=1.000000 :: min_score 0.3293->0.5531
+2026-10-16T02:24:49.329194+00:00 signal 15 — will stop after current experiment
+2026-10-16T02:24:49.799171+00:00 DONE experiments=96 best=1.000000 baseline=0.995831

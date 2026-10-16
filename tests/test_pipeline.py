@@ -81,3 +81,12 @@ def test_streamlit_app_renders(monkeypatch, tmp_path):
     monkeypatch.chdir(tmp_path)
     at = AppTest.from_file(str(tmp_path / "app.py"), default_timeout=60).run()
     assert not at.exception and len(at.metric) == 5
+
+
+def test_dev_hard_split_has_headroom_and_is_disjoint():
+    from media_recon.eval.composite import run_dev
+    from media_recon.generate import dev_hard, adversarial
+    assert not {v[0] for v in dev_hard.VENDORS} & {v[0] for v in adversarial.VENDORS}
+    assert 909091 not in dev_hard.DEV_SEEDS
+    r = run_dev(seeds=dev_hard.DEV_SEEDS[:2])
+    assert 0.3 < r["composite"] < 0.95
