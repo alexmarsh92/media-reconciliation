@@ -3,7 +3,7 @@
 **Goal:** Demo-ready prototype for Gainshare internal teams (target Thu Oct 22, 2026) to test demand for
 AI media reconciliation (IOs vs invoices vs delivery reports). Synthetic data only.
 
-**Repo:** https://github.com/alexmarsh92/media-reconciliation
+**Repo:** https://github.com/alexmarsh92/media-reconciliation · PR: https://github.com/alexmarsh92/media-reconciliation/pull/1
 
 ## Tasks
 | Task | Status |
@@ -21,4 +21,6 @@ AI media reconciliation (IOs vs invoices vs delivery reports). Synthetic data on
 | README with eval results | Done |
 | Tests (pytest) | Done (9 passing) |
 | GitHub repo create + push | Done |
-| PR for review | In progress |
+| PR for review | Open — [PR #1](https://github.com/alexmarsh92/media-reconciliation/pull/1) |
+| Code gardener 2026-10-16: removed dead schema code | Merged — [PR #2](https://github.com/alexmarsh92/media-reconciliation/pull/2) |
+| Overnight autoresearch (hard DEV) best exp 335 | PR open — see pull request; DEV 0.836→0.922, held-out flat 0.689 |
