@@ -9,6 +9,17 @@ import json
 from pathlib import Path
 
 _DEFAULTS = {
+    # grouped matching (one-to-many, many-to-one, cross-period allocation)
+    "enable_grouped": True,
+    "group_min_score_factor": 0.85,   # extra lines join a group at >= min_score * factor
+    "group_date_window_days": 45,     # extra lines must overlap/within this many days of the flight
+    "merge_split": True,              # split "A & B" invoice lines into parts and cover both IOs
+    "merge_part_min_score": 0.35,
+    "alloc_rel_tol": 0.02,            # aggregate tolerance for grouped invoice vs earned
+    "alloc_abs_tol": 1.0,             # $ slack for rounding across split/monthly lines
+    "date_tol_days": 0,
+    "fee_lines_as_exceptions": False, # non-media fee lines (ad serving, tech, production) are not IO lines
+
     "min_score": 0.45,
     "w_name": 0.70,
     "w_campaign": 0.15,

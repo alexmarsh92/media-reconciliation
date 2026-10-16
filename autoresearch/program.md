@@ -21,6 +21,20 @@ Fixed eval command (prints ONE float):
 python -m media_recon.eval.composite
 ```
 
+## 2026-10-16 restart #2 — grouped matching
+The 1:1 match cap was the bottleneck (flag precision ~0.49 even after tuning). A hand-written
+**grouped-matching baseline** now lives in `media_recon/match` + `media_recon/exceptions`:
+one-to-many (split lines, month-by-month cross-period billing), many-to-one (merged "A & B"
+invoice lines cover both IO lines), aggregate reconciliation within allocation tolerances,
+non-media fee lines not flagged, citations/confidence kept on every grouped match.
+Same tunables, 1:1 → grouped: DEV 0.702 → 0.828 (flag precision 0.491 → 0.696).
+Previous 1:1 hard-DEV run archived as `*_hardv1_1to1*.bak`.
+
+The loop still edits **tunables.json only** (no free-form code edits overnight — unsafe to revert
+reliably), but now also tunes the grouped knobs: `enable_grouped`, `group_min_score_factor`,
+`group_date_window_days`, `merge_split`, `merge_part_min_score`, `alloc_rel_tol`, `alloc_abs_tol`,
+`date_tol_days`. Structural changes are made by a human/agent between runs, then the loop re-tunes.
+
 ## Rules
 1. Edit **only** matching / extraction / threshold code via `media_recon/tunables.json`
    (and, if needed, narrowly scoped keys inside that JSON: min_score, weights,

@@ -1,0 +1,33 @@
+2026-10-16T02:27:46.515156+00:00 START pid=111575 hours=10.0 end≈2026-10-16T12:27:46.515118+00:00
+2026-10-16T02:27:48.007550+00:00 BASELINE composite=0.587825 MR=0.828 ER=0.855 FP=0.367
+2026-10-16T02:27:48.007831+00:00 NEW_BEST seq=0 exp=0 0.5878->0.5878 :: baseline
+2026-10-16T02:27:50.505336+00:00 NEW_BEST seq=1 exp=2 0.5878->0.6210 :: min_score 0.4500->0.4379; w_name 0.7000->0.7415; w_campaign 0.1500->0.2680; soft_vendor->False; vendor_jaccard_min 0.5500->0.6364; expand+srch=search; alias+msft
+2026-10-16T02:27:50.505452+00:00 exp 2 kept=True dev=0.620966 best=0.620966 :: min_score 0.4500->0.4379; w_name 0.7000->0.7415; w_campaign 0.1500->0.2680; soft_vendor->False; vendor_jaccard_min 0.5500->0.6364; expand+srch=search; alias+msft
+2026-10-16T02:27:52.769104+00:00 NEW_BEST seq=2 exp=4 0.6210->0.6333 :: expand+tko=takeover
+2026-10-16T02:27:52.769187+00:00 exp 4 kept=True dev=0.633322 best=0.633322 :: expand+tko=takeover
+2026-10-16T02:27:53.879062+00:00 exp 5 kept=False dev=0.633322 best=0.633322 :: alias-meta
+2026-10-16T02:27:59.510080+00:00 exp 10 kept=False dev=0.599249 best=0.633322 :: w_name 0.7415->0.7936; w_campaign 0.2680->0.0866; w_date 0.1500->0.1657
+2026-10-16T02:28:05.702652+00:00 CHECKPOINT exp=15 heldout=0.659660
+2026-10-16T02:28:05.702901+00:00 exp 15 kept=False dev=0.633322 best=0.633322 :: alias-thetradedesk
+2026-10-16T02:28:11.404360+00:00 exp 20 kept=False dev=0.633322 best=0.633322 :: overbill_tol 0.0200->0.0210
+2026-10-16T02:28:13.824958+00:00 CHECKPOINT exp=22 heldout=0.659660
+2026-10-16T02:28:13.825270+00:00 NEW_BEST seq=3 exp=22 0.6333->0.6684 :: alias+yahoo
+2026-10-16T02:28:13.825378+00:00 exp 22 kept=True dev=0.668387 best=0.668387 :: alias+yahoo
+2026-10-16T02:28:17.379462+00:00 exp 25 kept=False dev=0.668387 best=0.668387 :: alias-thetradedesk
+2026-10-16T02:28:24.073328+00:00 CHECKPOINT exp=30 heldout=0.659660
+2026-10-16T02:28:24.073623+00:00 exp 30 kept=False dev=0.668387 best=0.668387 :: rate_tol 0.0050->0.0258
+2026-10-16T02:28:29.816737+00:00 exp 35 kept=False dev=0.650595 best=0.668387 :: min_score 0.4379->0.4395; w_name 0.7415->0.6616; w_campaign 0.2680->0.3242; w_date 0.1500->0.2021; underdelivery_pct 0.9000->0.9335; overbill_tol 0.0200->0.0692; rate_tol 0.0050->0.0023; expand+ntv=native; alias+li marketing
+2026-10-16T02:28:34.601204+00:00 NEW_BEST seq=4 exp=39 0.6684->0.6882 :: alias+bing
+2026-10-16T02:28:34.601305+00:00 exp 39 kept=True dev=0.688157 best=0.688157 :: alias+bing
+2026-10-16T02:28:35.734965+00:00 exp 40 kept=False dev=0.679955 best=0.688157 :: min_score 0.4379->0.4035; w_name 0.7415->0.6769; w_campaign 0.2680->0.2268; w_date 0.1500->0.1476; underdelivery_pct 0.9000->0.8273; rate_tol 0.0050->0.0014; expand+tko=takeover; alias+tiktok ads
+2026-10-16T02:28:41.879763+00:00 CHECKPOINT exp=45 heldout=0.659660
+2026-10-16T02:28:41.880056+00:00 exp 45 kept=False dev=0.688157 best=0.688157 :: min_score 0.4379->0.4268
+2026-10-16T02:28:47.675042+00:00 exp 50 kept=False dev=0.688157 best=0.688157 :: overbill_tol 0.0200->0.0090
+2026-10-16T02:28:54.145616+00:00 exp 55 kept=False dev=0.688157 best=0.688157 :: expand+awr=awareness
+2026-10-16T02:29:00.328796+00:00 CHECKPOINT exp=60 heldout=0.659660
+2026-10-16T02:29:00.329114+00:00 exp 60 kept=False dev=0.688157 best=0.688157 :: min_score 0.4379->0.4013
+2026-10-16T02:29:06.168115+00:00 exp 65 kept=False dev=0.688157 best=0.688157 :: rate_tol 0.0050->0.0096
+2026-10-16T02:29:12.070124+00:00 NEW_BEST seq=5 exp=70 0.6882->0.7019 :: min_score 0.4379->0.4359; w_name 0.7415->0.7258; soft_vendor->True; vendor_jaccard_min 0.6364->0.6079; expand+coll=collection; alias+verizon media dsp
+2026-10-16T02:29:12.070254+00:00 exp 70 kept=True dev=0.701932 best=0.701932 :: min_score 0.4379->0.4359; w_name 0.7415->0.7258; soft_vendor->True; vendor_jaccard_min 0.6364->0.6079; expand+coll=collection; alias+verizon media dsp
+2026-10-16T02:29:14.731650+00:00 signal 15 — will stop after current experiment
+2026-10-16T02:29:14.837175+00:00 DONE experiments=72 best=0.701932 baseline=0.587825

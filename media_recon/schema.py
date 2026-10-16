@@ -66,6 +66,10 @@ class Match:
     delivery_id: str | None
     confidence: float
     citations: list[str] = field(default_factory=list)
+    # Grouped matching (one-to-many / many-to-one). invoice_id/delivery_id stay the primary line.
+    invoice_ids: list[str] = field(default_factory=list)
+    delivery_ids: list[str] = field(default_factory=list)
+    covered_by: list[str] = field(default_factory=list)   # merged invoice lines (primary on another IO) that also bill this IO
 
 
 @dataclass

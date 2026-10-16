@@ -1,6 +1,11 @@
 {
+  "alloc_abs_tol": 1.0,
+  "alloc_rel_tol": 0.02,
+  "date_tol_days": 0,
+  "enable_grouped": true,
   "expand": {
     "clk": "clicks",
+    "coll": "collection",
     "ctv": "ctv",
     "disp": "display",
     "dt": "desktop",
@@ -13,6 +18,7 @@
     "prosp": "prospecting",
     "rtg": "retargeting",
     "srch": "search",
+    "tko": "takeover",
     "tt": "tiktok",
     "vid": "video",
     "yt": "youtube"
@@ -26,7 +32,12 @@
     "%b %d %Y",
     "%d %b %Y"
   ],
-  "min_score": 0.45,
+  "fee_lines_as_exceptions": false,
+  "group_date_window_days": 45,
+  "group_min_score_factor": 0.85,
+  "merge_part_min_score": 0.35,
+  "merge_split": true,
+  "min_score": 0.4359,
   "overbill_tol": 0.02,
   "rate_tol": 0.005,
   "soft_vendor": true,
@@ -36,6 +47,7 @@
     "amazon ads": "amazon advertising",
     "amazon dsp": "amazon advertising",
     "ams": "amazon advertising",
+    "bing": "microsoft",
     "disney hulu": "hulu ad manager",
     "facebook": "meta platforms",
     "facebook ads": "meta platforms",
@@ -46,14 +58,17 @@
     "meta": "meta platforms",
     "meta platforms inc": "meta platforms",
     "meta platforms, inc.": "meta platforms",
+    "msft": "microsoft",
     "spotify": "spotify advertising",
     "spotify ads": "spotify advertising",
     "thetradedesk": "the trade desk",
     "trade desk": "the trade desk",
-    "ttd": "the trade desk"
+    "ttd": "the trade desk",
+    "verizon media dsp": "yahoo dsp",
+    "yahoo": "yahoo dsp"
   },
-  "vendor_jaccard_min": 0.55,
-  "w_campaign": 0.15,
+  "vendor_jaccard_min": 0.6079,
+  "w_campaign": 0.268,
   "w_date": 0.15,
-  "w_name": 0.7
+  "w_name": 0.7258
 }

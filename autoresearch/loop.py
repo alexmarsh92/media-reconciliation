@@ -116,6 +116,7 @@ def mutate(cfg: dict, rng: random.Random) -> tuple[dict, str]:
     kind = rng.choice([
         "min_score", "weights", "under", "overbill", "rate", "soft_vendor",
         "expand_add", "expand_drop", "vendor_add", "vendor_drop", "multi",
+        "grouped", "grouped", "alloc",
     ])
     parts = []
     def jitter(key, lo, hi, scale=0.05):
@@ -144,6 +145,24 @@ def mutate(cfg: dict, rng: random.Random) -> tuple[dict, str]:
             c["soft_vendor"] = not bool(c.get("soft_vendor", True))
             parts.append(f"soft_vendor->{c['soft_vendor']}")
         jitter("vendor_jaccard_min", 0.30, 0.85, 0.2)
+    # grouped-matching knobs (structural baseline in match/ + exceptions/; loop tunes, never edits code)
+    if kind == "grouped" or (kind == "multi" and rng.random() < 0.4):
+        jitter("group_min_score_factor", 0.5, 1.0, 0.2)
+        if rng.random() < 0.5:
+            jitter("group_date_window_days", 0, 90, 0.2)
+            c["group_date_window_days"] = int(round(c["group_date_window_days"]))
+        if rng.random() < 0.5:
+            jitter("merge_part_min_score", 0.15, 0.7, 0.2)
+        if rng.random() < 0.1:
+            c["merge_split"] = not bool(c.get("merge_split", True))
+            parts.append(f"merge_split->{c['merge_split']}")
+    if kind == "alloc" or (kind == "multi" and rng.random() < 0.4):
+        jitter("alloc_rel_tol", 0.0, 0.08, 0.25)
+        if rng.random() < 0.5:
+            jitter("alloc_abs_tol", 0.0, 25.0, 0.2)
+        if rng.random() < 0.3:
+            jitter("date_tol_days", 0, 10, 0.3)
+            c["date_tol_days"] = int(round(c["date_tol_days"]))
     if kind in ("expand_add", "multi") and rng.random() < 0.8:
         k, v = rng.choice(list(EXPAND_CANDIDATES.items()))
         c.setdefault("expand", {})[k] = v
