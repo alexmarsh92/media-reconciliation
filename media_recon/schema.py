@@ -4,8 +4,6 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field
 from datetime import date
 
-SOURCES = ("io", "invoice", "delivery")
-
 # Fields compared in the extraction eval, per source.
 FIELDS = {
     "io": ["io_number", "vendor", "campaign", "placement", "start", "end",
@@ -15,11 +13,6 @@ FIELDS = {
     "delivery": ["vendor", "campaign", "placement", "start", "end",
                  "impressions", "clicks", "amount", "currency"],
 }
-
-EXCEPTION_TYPES = ("overbilling", "underdelivery", "rate_mismatch", "missing_invoice",
-                   "makegood", "currency_mismatch", "date_mismatch",
-                   "unmatched_invoice", "unmatched_delivery")
-
 
 @dataclass
 class LineItem:
@@ -50,13 +43,6 @@ class LineItem:
         for k in ("start", "end"):
             d[k] = d[k].isoformat() if d[k] else None
         return d
-
-    @classmethod
-    def from_dict(cls, d: dict) -> "LineItem":
-        d = dict(d)
-        for k in ("start", "end"):
-            d[k] = date.fromisoformat(d[k]) if d.get(k) else None
-        return cls(**d)
 
 
 @dataclass

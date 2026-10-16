@@ -18,7 +18,7 @@ def batch(tmp_path_factory):
 
 
 def test_generator_writes_all_sources(batch):
-    d, gold, _ = batch
+    d, _, _ = batch
     assert len(list((d / "io").glob("*.xlsx"))) == 6
     assert len(list((d / "invoices").glob("*.pdf"))) == 6
     assert {p.suffix for p in (d / "delivery").iterdir()} == {".csv", ".pdf"}
