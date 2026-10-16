@@ -3,3 +3,11 @@ __pycache__/
 *.egg-info/
 data/output/
 .pytest_cache/
+
+# autoresearch runtime
+autoresearch/run.log
+autoresearch/PID
+autoresearch/ALERT_STALL
+autoresearch/ALERT_OVERFIT
+data/adversarial/out/
+data/synthetic/out/
