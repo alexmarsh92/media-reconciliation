@@ -49,3 +49,19 @@ def main(argv=None) -> None:
 
 if __name__ == "__main__":
     main()
+
+
+def run_validation(seeds=None) -> dict:
+    """VALIDATION gate split (generate/validation.py). Non-regression gate only."""
+    from ..generate.validation import VAL_SEEDS, generate as vgen
+    seeds = seeds or VAL_SEEDS
+    per = []
+    with tempfile.TemporaryDirectory() as tmp:
+        for s in seeds:
+            d = Path(tmp) / f"val{s}"
+            gold = vgen(d, seed=s)
+            per.append(score(gold, run(d, d / "out")))
+    avg = lambda k: sum(m[k] for m in per) / len(per)
+    mr, er, fp = avg("match_recall"), avg("error_recall"), avg("error_precision")
+    return {"composite": composite(mr, er, fp), "match_recall": mr, "error_recall": er,
+            "flag_precision": fp, "seeds": list(seeds), "split": "validation"}

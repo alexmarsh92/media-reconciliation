@@ -1,0 +1,10 @@
+{
+  "best_seq": 0,
+  "commit": "exp-0",
+  "experiment_id": 0,
+  "plain_words_change": "baseline",
+  "dev_old": 0.836357,
+  "dev_new": 0.836357,
+  "heldout_score": null,
+  "timestamp": "2026-10-16T03:07:16.678250+00:00"
+}

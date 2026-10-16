@@ -23,7 +23,7 @@ sys.path.insert(0, str(ROOT))
 os.chdir(ROOT)
 
 from media_recon.tunables import load as load_tunables, save as save_tunables  # noqa: E402
-from media_recon.eval.composite import run_dev  # noqa: E402
+from media_recon.eval.composite import run_dev, run_validation  # noqa: E402
 from media_recon.eval.adversarial_eval import evaluate_adversarial  # noqa: E402
 
 AR = ROOT / "autoresearch"
@@ -45,6 +45,16 @@ CHECKPOINT_EVERY_EXP = int(os.environ.get("AUTORESEARCH_CKPT_EXP", "15"))
 STALL_MINUTES = float(os.environ.get("AUTORESEARCH_STALL_MIN", "45"))
 from media_recon.generate.dev_hard import DEV_SEEDS  # noqa: E402  hard DEV split
 DEV_NOISE = None  # unused; difficulty baked into dev_hard
+
+# Over-specificity guards (restart #3, after exp-47 overfit):
+# - at most MAX_VENDOR_ALIAS_ADDS vendor-specific alias entries may be added beyond the baseline table
+# - single-string changes (alias +/-) must clear a larger DEV gain to be kept
+# - vendor-alias proposals are sampled far less often than generic abbreviation expansions
+MAX_VENDOR_ALIAS_ADDS = int(os.environ.get("AUTORESEARCH_MAX_ALIAS_ADDS", "3"))
+SPECIFIC_MIN_GAIN = float(os.environ.get("AUTORESEARCH_SPECIFIC_MIN_GAIN", "0.005"))
+VAL_TOL = float(os.environ.get("AUTORESEARCH_VAL_TOL", "1e-9"))  # validation must not drop
+BASE_ALIAS_KEYS: set[str] = set()
+VAL_STATE: dict = {}
 
 # Candidate tables are derived from the DEV vocabulary + generic industry abbreviations ONLY.
 # Held-out (data/adversarial) vendor names/abbreviations were deliberately removed to avoid leakage.
@@ -115,7 +125,7 @@ def mutate(cfg: dict, rng: random.Random) -> tuple[dict, str]:
     c = copy.deepcopy(cfg)
     kind = rng.choice([
         "min_score", "weights", "under", "overbill", "rate", "soft_vendor",
-        "expand_add", "expand_drop", "vendor_add", "vendor_drop", "multi",
+        "expand_add", "expand_add", "expand_drop", "vendor_add", "vendor_drop", "multi",
         "grouped", "grouped", "alloc",
     ])
     parts = []
@@ -172,7 +182,9 @@ def mutate(cfg: dict, rng: random.Random) -> tuple[dict, str]:
         if k not in ("mob", "dt", "prosp", "rtg"):  # keep core
             c["expand"].pop(k, None)
             parts.append(f"expand-{k}")
-    if kind in ("vendor_add", "multi") and rng.random() < 0.8:
+    added = set(c.get("vendor_aliases", {})) - BASE_ALIAS_KEYS
+    vendor_ok = len(added) < MAX_VENDOR_ALIAS_ADDS
+    if kind in ("vendor_add", "multi") and vendor_ok and rng.random() < (0.8 if kind == "vendor_add" else 0.15):
         k, v = rng.choice(list(VENDOR_CANDIDATES.items()))
         c.setdefault("vendor_aliases", {})[k] = v
         parts.append(f"alias+{k}")
@@ -193,6 +205,7 @@ def append_result(row: dict) -> None:
             f"{row['error_recall']:.6f}", f"{row['flag_precision']:.6f}",
             row["change"].replace("\t", " "),
             "" if row["heldout_composite"] is None else f"{row['heldout_composite']:.6f}",
+            "" if row.get("val_composite") is None else f"{row['val_composite']:.6f}",
         ]) + "\n")
 
 
@@ -224,6 +237,10 @@ def refresh_morning(baseline: dict, best: dict, best_change: str, heldout_hist: 
                      f"{h['error_recall']:.3f} | {h['flag_precision']:.3f} |")
     else:
         lines.append("| — | — | — | — | — |")
+    lines += ["", "## Validation gate (keep only if DEV improves AND validation does not drop)",
+              f"Baseline validation: {VAL_STATE.get('baseline', float('nan')):.4f} | "
+              f"current best validation: {VAL_STATE.get('best', float('nan')):.4f} | "
+              f"gate rejections: {VAL_STATE.get('rejected', 0)}"]
     lines += ["", "## Top changes kept"]
     if kept_changes:
         for i, ch in enumerate(kept_changes[-15:], 1):
@@ -283,6 +300,18 @@ def main() -> None:
         f"MR={baseline['match_recall']:.3f} ER={baseline['error_recall']:.3f} "
         f"FP={baseline['flag_precision']:.3f}")
 
+    BASE_ALIAS_KEYS.update(baseline_cfg.get("vendor_aliases", {}).keys())
+    val_best = run_validation()
+    VAL_STATE.update(baseline=val_best["composite"], best=val_best["composite"], rejected=0)
+    log(f"BASELINE validation={val_best['composite']:.6f} MR={val_best['match_recall']:.3f} "
+        f"ER={val_best['error_recall']:.3f} FP={val_best['flag_precision']:.3f}")
+    try:
+        h0 = evaluate_adversarial()
+        log(f"BASELINE heldout_checkpoint={h0['composite']:.6f}")
+    except Exception as e:
+        h0 = None
+        log(f"baseline checkpoint error: {e}")
+
     best = dict(baseline)
     best_cfg = copy.deepcopy(baseline_cfg)
     BEST_TUNABLES.write_text(json.dumps(best_cfg, indent=2) + "\n")
@@ -293,7 +322,7 @@ def main() -> None:
     kept_changes: list[str] = []
     heldout_hist: list[dict] = []
     overfit_notes: list[str] = []
-    last_heldout_score: float | None = None
+    last_heldout_score: float | None = None if h0 is None else h0["composite"]
     kept_since_ckpt = 0
     exp_id = 0
     last_progress = time.time()
@@ -325,7 +354,19 @@ def main() -> None:
                 last_progress = time.time()
                 continue
 
-            improved = dev["composite"] > best["composite"] + 1e-9
+            specific = ("alias" in change) and not any(t in change for t in ("min_score", "w_", "tol", "expand"))
+            need = SPECIFIC_MIN_GAIN if specific else 1e-9
+            dev_up = dev["composite"] > best["composite"] + need
+            val = None
+            improved = False
+            if dev_up:
+                val = run_validation()
+                improved = val["composite"] >= val_best["composite"] - VAL_TOL
+                if not improved:
+                    VAL_STATE["rejected"] = VAL_STATE.get("rejected", 0) + 1
+                    log(f"exp {exp_id} REJECTED by validation gate: DEV {best['composite']:.4f}->"
+                        f"{dev['composite']:.4f} but VAL {val_best['composite']:.4f}->{val['composite']:.4f} :: {change}")
+                    change = f"[VAL-GATE {val['composite']:.4f}<{val_best['composite']:.4f}] " + change
             heldout_val = None
             do_ckpt = False
             if improved:
@@ -364,6 +405,8 @@ def main() -> None:
             if improved:
                 old = best["composite"]
                 best = dict(dev)
+                val_best = val
+                VAL_STATE["best"] = val["composite"]
                 best_cfg = copy.deepcopy(proposal)
                 BEST_TUNABLES.write_text(json.dumps(best_cfg, indent=2) + "\n")
                 best_change = change
@@ -380,6 +423,7 @@ def main() -> None:
                 "dev_composite": dev["composite"], "match_recall": dev["match_recall"],
                 "error_recall": dev["error_recall"], "flag_precision": dev["flag_precision"],
                 "change": change, "heldout_composite": heldout_val,
+                "val_composite": None if val is None else val["composite"],
             })
             last_progress = time.time()
             if exp_id % 5 == 0 or improved:

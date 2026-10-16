@@ -1,13 +1,22 @@
 {
-  "min_score": 0.45,
-  "w_name": 0.7,
-  "w_campaign": 0.15,
-  "w_date": 0.15,
-  "underdelivery_pct": 0.9,
-  "overbill_tol": 0.02,
-  "rate_tol": 0.005,
+  "enable_grouped": true,
+  "group_min_score_factor": 0.8196,
+  "group_date_window_days": 45,
+  "merge_split": true,
+  "merge_part_min_score": 0.4348,
+  "alloc_rel_tol": 0.02,
+  "alloc_abs_tol": 1.0,
+  "date_tol_days": 0,
+  "fee_lines_as_exceptions": false,
+  "min_score": 0.3833,
+  "w_name": 0.89,
+  "w_campaign": 0.2739,
+  "w_date": 0.3328,
+  "underdelivery_pct": 0.9005,
+  "overbill_tol": 0.0106,
+  "rate_tol": 0.0053,
   "soft_vendor": true,
-  "vendor_jaccard_min": 0.55,
+  "vendor_jaccard_min": 0.6079,
   "expand": {
     "mob": "mobile",
     "dt": "desktop",
@@ -24,7 +33,9 @@
     "ctv": "ctv",
     "olv": "online",
     "impr": "impressions",
-    "clk": "clicks"
+    "clk": "clicks",
+    "coll": "collection",
+    "tko": "takeover"
   },
   "vendor_aliases": {
     "meta": "meta platforms",
@@ -45,7 +56,11 @@
     "hulu": "hulu ad manager",
     "disney hulu": "hulu ad manager",
     "spotify": "spotify advertising",
-    "spotify ads": "spotify advertising"
+    "spotify ads": "spotify advertising",
+    "bing": "microsoft",
+    "msft": "microsoft",
+    "verizon media dsp": "yahoo dsp",
+    "yahoo": "yahoo dsp"
   },
   "extra_date_formats": [
     "%Y/%m/%d",

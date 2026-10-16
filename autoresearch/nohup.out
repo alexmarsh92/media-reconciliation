@@ -1,0 +1,318 @@
+2026-10-16T02:30:32.510671+00:00 START pid=114616 hours=10.0 end≈2026-10-16T12:30:32.510637+00:00
+2026-10-16T02:30:34.048524+00:00 BASELINE composite=0.828341 MR=0.937 ER=0.896 FP=0.696
+2026-10-16T02:30:34.048857+00:00 NEW_BEST seq=0 exp=0 0.8283->0.8283 :: baseline
+2026-10-16T02:30:41.568159+00:00 NEW_BEST seq=1 exp=5 0.8283->0.8351 :: group_min_score_factor 0.8500->0.7557
+2026-10-16T02:30:41.568267+00:00 exp 5 kept=True dev=0.835129 best=0.835129 :: group_min_score_factor 0.8500->0.7557
+2026-10-16T02:30:47.570868+00:00 NEW_BEST seq=2 exp=9 0.8351->0.8364 :: min_score 0.4359->0.3833; w_name 0.7258->0.8900; w_campaign 0.2680->0.2739; w_date 0.1500->0.3328; underdelivery_pct 0.9000->0.9005; overbill_tol 0.0200->0.0106; rate_tol 0.0050->0.0053; group_min_score_factor 0.7557->0.8196; merge_part_min_score 0.3500->0.4348
+2026-10-16T02:30:47.571011+00:00 exp 9 kept=True dev=0.836357 best=0.836357 :: min_score 0.4359->0.3833; w_name 0.7258->0.8900; w_campaign 0.2680->0.2739; w_date 0.1500->0.3328; underdelivery_pct 0.9000->0.9005; overbill_tol 0.0200->0.0106; rate_tol 0.0050->0.0053; group_min_score_factor 0.7557->0.8196; merge_part_min_score 0.3500->0.4348
+2026-10-16T02:30:49.167209+00:00 exp 10 kept=False dev=0.836357 best=0.836357 :: group_min_score_factor 0.8196->0.9111; merge_part_min_score 0.4348->0.5296
+2026-10-16T02:30:56.860996+00:00 CHECKPOINT exp=15 heldout=0.689189
+2026-10-16T02:30:56.861313+00:00 exp 15 kept=False dev=0.836357 best=0.836357 :: underdelivery_pct 0.9005->0.9207
+2026-10-16T02:31:04.435374+00:00 exp 20 kept=False dev=0.836357 best=0.836357 :: group_min_score_factor 0.8196->0.9032; group_date_window_days 45.0000->27.8146
+2026-10-16T02:31:11.693450+00:00 exp 25 kept=False dev=0.822792 best=0.836357 :: min_score 0.3833->0.3258
+2026-10-16T02:31:18.984143+00:00 CHECKPOINT exp=30 heldout=0.689189
+2026-10-16T02:31:18.984457+00:00 exp 30 kept=False dev=0.836357 best=0.836357 :: soft_vendor->False; vendor_jaccard_min 0.6079->0.6773
+2026-10-16T02:31:26.070868+00:00 exp 35 kept=False dev=0.836357 best=0.836357 :: group_min_score_factor 0.8196->0.7780; group_date_window_days 45.0000->40.9941
+2026-10-16T02:31:32.923444+00:00 exp 40 kept=False dev=0.836357 best=0.836357 :: overbill_tol 0.0106->0.0050
+2026-10-16T02:31:40.150722+00:00 CHECKPOINT exp=45 heldout=0.689189
+2026-10-16T02:31:40.150966+00:00 exp 45 kept=False dev=0.836357 best=0.836357 :: underdelivery_pct 0.9005->0.8674
+2026-10-16T02:31:43.183908+00:00 ALERT_OVERFIT: {'exp_id': 47, 'change': 'min_score 0.3833->0.3231', 'dev_old': 0.8363569493500782, 'dev_new': 0.843004284590112, 'heldout_old': 0.6891891891891891, 'heldout_new': 0.654275092936803, 'timestamp': '2026-10-16T02:31:43.183781+00:00'}
+2026-10-16T02:31:43.183955+00:00 CHECKPOINT exp=47 heldout=0.654275
+2026-10-16T02:31:43.184174+00:00 NEW_BEST seq=3 exp=47 0.8364->0.8430 :: min_score 0.3833->0.3231
+2026-10-16T02:31:43.184263+00:00 exp 47 kept=True dev=0.843004 best=0.843004 :: min_score 0.3833->0.3231
+2026-10-16T02:31:47.473219+00:00 exp 50 kept=False dev=0.843004 best=0.843004 :: w_name 0.8900->0.8405; w_campaign 0.2739->0.2970; w_date 0.3328->0.3054
+2026-10-16T02:31:54.613536+00:00 exp 55 kept=False dev=0.843004 best=0.843004 :: underdelivery_pct 0.9005->0.8832
+2026-10-16T02:32:01.708084+00:00 CHECKPOINT exp=60 heldout=0.654275
+2026-10-16T02:32:01.708354+00:00 exp 60 kept=False dev=0.843004 best=0.843004 :: alias-ttd
+2026-10-16T02:32:08.578577+00:00 exp 65 kept=False dev=0.843004 best=0.843004 :: group_min_score_factor 0.8196->0.8499; group_date_window_days 45.0000->39.9250
+2026-10-16T02:32:15.544849+00:00 exp 70 kept=False dev=0.843004 best=0.843004 :: rate_tol 0.0053->0.0061
+2026-10-16T02:32:22.951117+00:00 CHECKPOINT exp=75 heldout=0.654275
+2026-10-16T02:32:22.951429+00:00 exp 75 kept=False dev=0.843004 best=0.843004 :: min_score 0.3231->0.3110
+2026-10-16T02:32:30.231035+00:00 exp 80 kept=False dev=0.843004 best=0.843004 :: alias+tiktok ads
+2026-10-16T02:32:37.007016+00:00 exp 85 kept=False dev=0.843004 best=0.843004 :: expand+olv=online
+2026-10-16T02:32:43.852389+00:00 CHECKPOINT exp=90 heldout=0.654275
+2026-10-16T02:32:43.852629+00:00 exp 90 kept=False dev=0.843004 best=0.843004 :: underdelivery_pct 0.9005->0.8629
+2026-10-16T02:32:50.603738+00:00 exp 95 kept=False dev=0.843004 best=0.843004 :: expand-yt
+2026-10-16T02:32:57.704558+00:00 exp 100 kept=False dev=0.843004 best=0.843004 :: expand-vid
+2026-10-16T02:33:04.973501+00:00 CHECKPOINT exp=105 heldout=0.654275
+2026-10-16T02:33:04.973785+00:00 exp 105 kept=False dev=0.843004 best=0.843004 :: alloc_rel_tol 0.0200->0.0235
+2026-10-16T02:33:11.779381+00:00 exp 110 kept=False dev=0.843004 best=0.843004 :: group_min_score_factor 0.8196->0.7229; group_date_window_days 45.0000->28.7010
+2026-10-16T02:33:18.643034+00:00 exp 115 kept=False dev=0.836357 best=0.843004 :: min_score 0.3231->0.3720
+2026-10-16T02:33:25.853798+00:00 CHECKPOINT exp=120 heldout=0.689189
+2026-10-16T02:33:25.854111+00:00 exp 120 kept=False dev=0.836357 best=0.843004 :: min_score 0.3231->0.3551
+2026-10-16T02:33:32.799129+00:00 exp 125 kept=False dev=0.843004 best=0.843004 :: vendor_jaccard_min 0.6079->0.5404
+2026-10-16T02:33:39.825199+00:00 exp 130 kept=False dev=0.843004 best=0.843004 :: rate_tol 0.0053->0.0042
+2026-10-16T02:33:46.876638+00:00 CHECKPOINT exp=135 heldout=0.654275
+2026-10-16T02:33:46.876961+00:00 exp 135 kept=False dev=0.843004 best=0.843004 :: min_score 0.3231->0.2964
+2026-10-16T02:33:53.969009+00:00 exp 140 kept=False dev=0.843004 best=0.843004 :: alloc_rel_tol 0.0200->0.0198
+2026-10-16T02:34:00.733206+00:00 exp 145 kept=False dev=0.836357 best=0.843004 :: min_score 0.3231->0.3269
+2026-10-16T02:34:06.427485+00:00 NEW_BEST seq=4 exp=149 0.8430->0.8457 :: min_score 0.3231->0.3479; w_name 0.8900->0.7239; w_campaign 0.2739->0.2234; w_date 0.3328->0.3500; overbill_tol 0.0106->0.0050; rate_tol 0.0053->0.0010; alloc_rel_tol 0.0200->0.0059; alloc_abs_tol 1.0000->4.9157; expand+prsp=prospecting
+2026-10-16T02:34:06.427611+00:00 exp 149 kept=True dev=0.845694 best=0.845694 :: min_score 0.3231->0.3479; w_name 0.8900->0.7239; w_campaign 0.2739->0.2234; w_date 0.3328->0.3500; overbill_tol 0.0106->0.0050; rate_tol 0.0053->0.0010; alloc_rel_tol 0.0200->0.0059; alloc_abs_tol 1.0000->4.9157; expand+prsp=prospecting
+2026-10-16T02:34:08.118015+00:00 CHECKPOINT exp=150 heldout=0.654275
+2026-10-16T02:34:08.118282+00:00 exp 150 kept=False dev=0.845694 best=0.845694 :: alias+snapchat
+2026-10-16T02:34:09.744852+00:00 NEW_BEST seq=5 exp=151 0.8457->0.8522 :: min_score 0.3479->0.3057
+2026-10-16T02:34:09.744944+00:00 exp 151 kept=True dev=0.852236 best=0.852236 :: min_score 0.3479->0.3057
+2026-10-16T02:34:15.447273+00:00 exp 155 kept=False dev=0.852236 best=0.852236 :: min_score 0.3057->0.2776; w_name 0.7239->0.7825; w_date 0.3500->0.3500; underdelivery_pct 0.9005->0.8423; overbill_tol 0.0050->0.0187; rate_tol 0.0010->0.0010; vendor_jaccard_min 0.6079->0.6027; expand+cat=catalog; alias+tiktok
+2026-10-16T02:34:22.632791+00:00 exp 160 kept=False dev=0.852236 best=0.852236 :: alloc_rel_tol 0.0059->0.0152; date_tol_days 0.0000->0.2669
+2026-10-16T02:34:29.729475+00:00 CHECKPOINT exp=165 heldout=0.654275
+2026-10-16T02:34:29.729831+00:00 exp 165 kept=False dev=0.852236 best=0.852236 :: alloc_rel_tol 0.0059->0.0171
+2026-10-16T02:34:36.768922+00:00 exp 170 kept=False dev=0.852236 best=0.852236 :: alias+verizon media dsp
+2026-10-16T02:34:44.493047+00:00 exp 175 kept=False dev=0.852236 best=0.852236 :: overbill_tol 0.0050->0.0050
+2026-10-16T02:34:51.788589+00:00 CHECKPOINT exp=180 heldout=0.654275
+2026-10-16T02:34:51.788837+00:00 exp 180 kept=False dev=0.852236 best=0.852236 :: min_score 0.3057->0.2500; w_name 0.7239->0.6713; overbill_tol 0.0050->0.0131; vendor_jaccard_min 0.6079->0.5164
+2026-10-16T02:34:58.354569+00:00 exp 185 kept=False dev=0.852236 best=0.852236 :: w_name 0.7239->0.6662; w_campaign 0.2234->0.2794; w_date 0.3500->0.2313
+2026-10-16T02:35:05.056470+00:00 exp 190 kept=False dev=0.793129 best=0.852236 :: min_score 0.3057->0.3139; w_name 0.7239->0.5587; w_campaign 0.2234->0.2740; w_date 0.3500->0.3047; underdelivery_pct 0.9005->0.9163; rate_tol 0.0010->0.0054; group_min_score_factor 0.8196->0.7776; merge_part_min_score 0.4348->0.4498; merge_split->False; expand+coll=collection; alias+bing ads
+2026-10-16T02:35:10.856322+00:00 CHECKPOINT exp=194 heldout=0.654275
+2026-10-16T02:35:10.856683+00:00 NEW_BEST seq=6 exp=194 0.8522->0.8662 :: min_score 0.3057->0.3544; w_name 0.7239->0.6904; w_campaign 0.2234->0.2073; underdelivery_pct 0.9005->0.8830; overbill_tol 0.0050->0.0182; alloc_rel_tol 0.0059->0.0752; alloc_abs_tol 4.9157->1.0242; expand+shop=shopping
+2026-10-16T02:35:10.856787+00:00 exp 194 kept=True dev=0.866183 best=0.866183 :: min_score 0.3057->0.3544; w_name 0.7239->0.6904; w_campaign 0.2234->0.2073; underdelivery_pct 0.9005->0.8830; overbill_tol 0.0050->0.0182; alloc_rel_tol 0.0059->0.0752; alloc_abs_tol 4.9157->1.0242; expand+shop=shopping
+2026-10-16T02:35:12.478427+00:00 CHECKPOINT exp=195 heldout=0.654275
+2026-10-16T02:35:12.478683+00:00 exp 195 kept=False dev=0.866183 best=0.866183 :: overbill_tol 0.0182->0.0073
+2026-10-16T02:35:19.494627+00:00 exp 200 kept=False dev=0.861520 best=0.866183 :: min_score 0.3544->0.4003
+2026-10-16T02:35:26.126043+00:00 exp 205 kept=False dev=0.866183 best=0.866183 :: expand+gen=generic
+2026-10-16T02:35:33.150522+00:00 CHECKPOINT exp=210 heldout=0.654275
+2026-10-16T02:35:33.150804+00:00 exp 210 kept=False dev=0.866183 best=0.866183 :: group_min_score_factor 0.8196->0.7692; group_date_window_days 45.0000->61.9510
+2026-10-16T02:35:39.853287+00:00 exp 215 kept=False dev=0.852236 best=0.866183 :: w_name 0.6904->0.6623; w_campaign 0.2073->0.2663; w_date 0.3500->0.2981
+2026-10-16T02:35:46.648398+00:00 exp 220 kept=False dev=0.861520 best=0.866183 :: min_score 0.3544->0.4077
+2026-10-16T02:35:53.725013+00:00 CHECKPOINT exp=225 heldout=0.654275
+2026-10-16T02:35:53.725285+00:00 exp 225 kept=False dev=0.866183 best=0.866183 :: vendor_jaccard_min 0.6079->0.5589
+2026-10-16T02:36:00.203882+00:00 exp 230 kept=False dev=0.866183 best=0.866183 :: group_min_score_factor 0.8196->0.7248
+2026-10-16T02:36:07.056841+00:00 exp 235 kept=False dev=0.866183 best=0.866183 :: alloc_rel_tol 0.0752->0.0800; alloc_abs_tol 1.0242->3.8150
+2026-10-16T02:36:14.071036+00:00 CHECKPOINT exp=240 heldout=0.654275
+2026-10-16T02:36:14.071321+00:00 exp 240 kept=False dev=0.866183 best=0.866183 :: rate_tol 0.0010->0.0010
+2026-10-16T02:36:21.055774+00:00 exp 245 kept=False dev=0.866183 best=0.866183 :: min_score 0.3544->0.3431; w_name 0.6904->0.7686; w_date 0.3500->0.3061; underdelivery_pct 0.8830->0.9079; overbill_tol 0.0182->0.0336; rate_tol 0.0010->0.0020; expand+hp=homepage; alias+bing
+2026-10-16T02:36:27.956881+00:00 exp 250 kept=False dev=0.866183 best=0.866183 :: group_min_score_factor 0.8196->0.7755; merge_part_min_score 0.4348->0.3743
+2026-10-16T02:36:35.221453+00:00 CHECKPOINT exp=255 heldout=0.654275
+2026-10-16T02:36:35.221749+00:00 exp 255 kept=False dev=0.866183 best=0.866183 :: vendor_jaccard_min 0.6079->0.5761
+2026-10-16T02:36:42.294326+00:00 exp 260 kept=False dev=0.723945 best=0.866183 :: min_score 0.3544->0.6064; w_name 0.6904->0.7287; w_campaign 0.2073->0.2349; w_date 0.3500->0.3500; underdelivery_pct 0.8830->0.8868; rate_tol 0.0010->0.0081; expand+ctv=ctv; alias+bing
+2026-10-16T02:36:49.223131+00:00 exp 265 kept=False dev=0.866183 best=0.866183 :: underdelivery_pct 0.8830->0.8670
+2026-10-16T02:36:56.594905+00:00 CHECKPOINT exp=270 heldout=0.654275
+2026-10-16T02:36:56.595222+00:00 exp 270 kept=False dev=0.866183 best=0.866183 :: group_min_score_factor 0.8196->0.9668; merge_part_min_score 0.4348->0.5261
+2026-10-16T02:37:03.555832+00:00 exp 275 kept=False dev=0.866183 best=0.866183 :: min_score 0.3544->0.3635
+2026-10-16T02:37:10.336691+00:00 exp 280 kept=False dev=0.866183 best=0.866183 :: w_name 0.6904->0.7272; w_campaign 0.2073->0.2577; w_date 0.3500->0.3325
+2026-10-16T02:37:17.237812+00:00 CHECKPOINT exp=285 heldout=0.597015
+2026-10-16T02:37:17.238147+00:00 exp 285 kept=False dev=0.790052 best=0.866183 :: min_score 0.3544->0.5539; w_name 0.6904->0.6418; w_date 0.3500->0.3483; overbill_tol 0.0182->0.0174; alias+linkedin
+2026-10-16T02:37:24.249080+00:00 exp 290 kept=False dev=0.866183 best=0.866183 :: soft_vendor->False; vendor_jaccard_min 0.6079->0.6931
+2026-10-16T02:37:31.556835+00:00 exp 295 kept=False dev=0.866183 best=0.866183 :: group_min_score_factor 0.8196->0.8422; group_date_window_days 45.0000->49.0233; merge_part_min_score 0.4348->0.4454
+2026-10-16T02:37:38.566414+00:00 CHECKPOINT exp=300 heldout=0.654275
+2026-10-16T02:37:38.566685+00:00 exp 300 kept=False dev=0.866183 best=0.866183 :: underdelivery_pct 0.8830->0.8882
+2026-10-16T02:37:45.332677+00:00 exp 305 kept=False dev=0.861520 best=0.866183 :: min_score 0.3544->0.3918
+2026-10-16T02:37:51.920600+00:00 exp 310 kept=False dev=0.866183 best=0.866183 :: expand-prem
+2026-10-16T02:37:59.045223+00:00 CHECKPOINT exp=315 heldout=0.654275
+2026-10-16T02:37:59.045524+00:00 exp 315 kept=False dev=0.866183 best=0.866183 :: overbill_tol 0.0182->0.0172
+2026-10-16T02:38:05.924591+00:00 exp 320 kept=False dev=0.866183 best=0.866183 :: alias+roku ads
+2026-10-16T02:38:12.839616+00:00 exp 325 kept=False dev=0.866183 best=0.866183 :: expand-ctv
+2026-10-16T02:38:20.284692+00:00 CHECKPOINT exp=330 heldout=0.654275
+2026-10-16T02:38:20.284942+00:00 exp 330 kept=False dev=0.811729 best=0.866183 :: group_min_score_factor 0.8196->0.7567; merge_split->False
+2026-10-16T02:38:27.177450+00:00 exp 335 kept=False dev=0.866183 best=0.866183 :: group_min_score_factor 0.8196->0.9031; merge_part_min_score 0.4348->0.3280
+2026-10-16T02:38:34.309059+00:00 exp 340 kept=False dev=0.866183 best=0.866183 :: group_min_score_factor 0.8196->0.8679; merge_part_min_score 0.4348->0.4388
+2026-10-16T02:38:41.805479+00:00 CHECKPOINT exp=345 heldout=0.654275
+2026-10-16T02:38:41.805807+00:00 exp 345 kept=False dev=0.866183 best=0.866183 :: vendor_jaccard_min 0.6079->0.5111
+2026-10-16T02:38:48.197036+00:00 exp 350 kept=False dev=0.866183 best=0.866183 :: alias+snap ads
+2026-10-16T02:38:55.055105+00:00 exp 355 kept=False dev=0.866183 best=0.866183 :: expand+mob=mobile
+2026-10-16T02:39:02.283936+00:00 CHECKPOINT exp=360 heldout=0.654275
+2026-10-16T02:39:02.284224+00:00 exp 360 kept=False dev=0.866183 best=0.866183 :: rate_tol 0.0010->0.0010
+2026-10-16T02:39:08.934625+00:00 exp 365 kept=False dev=0.866183 best=0.866183 :: overbill_tol 0.0182->0.0207
+2026-10-16T02:39:15.821712+00:00 exp 370 kept=False dev=0.866183 best=0.866183 :: overbill_tol 0.0182->0.0050
+2026-10-16T02:39:22.726974+00:00 CHECKPOINT exp=375 heldout=0.654275
+2026-10-16T02:39:22.727222+00:00 exp 375 kept=False dev=0.866183 best=0.866183 :: vendor_jaccard_min 0.6079->0.5971
+2026-10-16T02:39:29.710357+00:00 exp 380 kept=False dev=0.866183 best=0.866183 :: expand+dt=desktop
+2026-10-16T02:39:33.799650+00:00 NEW_BEST seq=7 exp=383 0.8662->0.9220 :: alias+pintrest
+2026-10-16T02:39:33.799747+00:00 exp 383 kept=True dev=0.922031 best=0.922031 :: alias+pintrest
+2026-10-16T02:39:36.577188+00:00 exp 385 kept=False dev=0.905604 best=0.922031 :: min_score 0.3544->0.3937; w_campaign 0.2073->0.1511; underdelivery_pct 0.8830->0.8746; overbill_tol 0.0182->0.0093; group_min_score_factor 0.8196->0.8202; group_date_window_days 45.0000->48.4770; alloc_rel_tol 0.0752->0.0748; expand+ntwk=network
+2026-10-16T02:39:44.324282+00:00 CHECKPOINT exp=390 heldout=0.654275
+2026-10-16T02:39:44.324597+00:00 exp 390 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.8036
+2026-10-16T02:39:51.121625+00:00 exp 395 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3359
+2026-10-16T02:39:58.081607+00:00 exp 400 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.5016
+2026-10-16T02:40:05.456654+00:00 CHECKPOINT exp=405 heldout=0.689189
+2026-10-16T02:40:05.456912+00:00 exp 405 kept=False dev=0.922031 best=0.922031 :: w_name 0.6904->0.7852; w_campaign 0.2073->0.2043; w_date 0.3500->0.3500
+2026-10-16T02:40:12.659074+00:00 exp 410 kept=False dev=0.922031 best=0.922031 :: expand-tko
+2026-10-16T02:40:19.701481+00:00 exp 415 kept=False dev=0.922031 best=0.922031 :: overbill_tol 0.0182->0.0123
+2026-10-16T02:40:26.925759+00:00 CHECKPOINT exp=420 heldout=0.654275
+2026-10-16T02:40:26.926068+00:00 exp 420 kept=False dev=0.922031 best=0.922031 :: alloc_rel_tol 0.0752->0.0747; date_tol_days 0.0000->1.0482
+2026-10-16T02:40:33.948947+00:00 exp 425 kept=False dev=0.922031 best=0.922031 :: alloc_rel_tol 0.0752->0.0668
+2026-10-16T02:40:40.805076+00:00 exp 430 kept=False dev=0.922031 best=0.922031 :: rate_tol 0.0010->0.0010
+2026-10-16T02:40:48.138051+00:00 CHECKPOINT exp=435 heldout=0.689189
+2026-10-16T02:40:48.138418+00:00 exp 435 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3666; w_name 0.6904->0.7480; w_campaign 0.2073->0.2042; w_date 0.3500->0.3500; rate_tol 0.0010->0.0120; expand+aud=audience; alias+verizon media dsp
+2026-10-16T02:40:55.268218+00:00 exp 440 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3226
+2026-10-16T02:41:02.031433+00:00 exp 445 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3459
+2026-10-16T02:41:09.161615+00:00 CHECKPOINT exp=450 heldout=0.654275
+2026-10-16T02:41:09.161990+00:00 exp 450 kept=False dev=0.922031 best=0.922031 :: w_name 0.6904->0.7836; w_campaign 0.2073->0.2270; w_date 0.3500->0.3500
+2026-10-16T02:41:16.241387+00:00 exp 455 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.7893; group_date_window_days 45.0000->38.3281; merge_part_min_score 0.4348->0.5155
+2026-10-16T02:41:23.342019+00:00 exp 460 kept=False dev=0.881392 best=0.922031 :: underdelivery_pct 0.8830->0.9423
+2026-10-16T02:41:30.505003+00:00 CHECKPOINT exp=465 heldout=0.654275
+2026-10-16T02:41:30.505247+00:00 exp 465 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3541
+2026-10-16T02:41:37.372278+00:00 exp 470 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3455
+2026-10-16T02:41:44.195498+00:00 exp 475 kept=False dev=0.908538 best=0.922031 :: min_score 0.3544->0.2917; w_name 0.6904->0.6138; w_campaign 0.2073->0.1841; w_date 0.3500->0.3341; underdelivery_pct 0.8830->0.8911; expand+aud=audience; alias+pinterest ads
+2026-10-16T02:41:51.100666+00:00 CHECKPOINT exp=480 heldout=0.654275
+2026-10-16T02:41:51.101290+00:00 exp 480 kept=False dev=0.922031 best=0.922031 :: soft_vendor->False; vendor_jaccard_min 0.6079->0.5657
+2026-10-16T02:41:58.370635+00:00 exp 485 kept=False dev=0.922031 best=0.922031 :: underdelivery_pct 0.8830->0.9097
+2026-10-16T02:42:05.751824+00:00 exp 490 kept=False dev=0.922031 best=0.922031 :: w_name 0.6904->0.7441; w_campaign 0.2073->0.2026; w_date 0.3500->0.3122
+2026-10-16T02:42:13.366814+00:00 CHECKPOINT exp=495 heldout=0.654275
+2026-10-16T02:42:13.367130+00:00 exp 495 kept=False dev=0.922031 best=0.922031 :: alias+roku
+2026-10-16T02:42:20.735042+00:00 exp 500 kept=False dev=0.922031 best=0.922031 :: overbill_tol 0.0182->0.0075
+2026-10-16T02:42:28.230144+00:00 exp 505 kept=False dev=0.922031 best=0.922031 :: alias-thetradedesk
+2026-10-16T02:42:35.472198+00:00 CHECKPOINT exp=510 heldout=0.654275
+2026-10-16T02:42:35.472491+00:00 exp 510 kept=False dev=0.922031 best=0.922031 :: overbill_tol 0.0182->0.0061
+2026-10-16T02:42:42.418595+00:00 exp 515 kept=False dev=0.922031 best=0.922031 :: rate_tol 0.0010->0.0129
+2026-10-16T02:42:49.533660+00:00 exp 520 kept=False dev=0.922031 best=0.922031 :: alias+the roku channel
+2026-10-16T02:42:56.980581+00:00 CHECKPOINT exp=525 heldout=0.654275
+2026-10-16T02:42:56.980829+00:00 exp 525 kept=False dev=0.922031 best=0.922031 :: underdelivery_pct 0.8830->0.8980
+2026-10-16T02:43:03.903193+00:00 exp 530 kept=False dev=0.922031 best=0.922031 :: alias+tik tok
+2026-10-16T02:43:10.780801+00:00 exp 535 kept=False dev=0.922031 best=0.922031 :: alloc_rel_tol 0.0752->0.0767; date_tol_days 0.0000->1.6814
+2026-10-16T02:43:18.186830+00:00 CHECKPOINT exp=540 heldout=0.654275
+2026-10-16T02:43:18.187169+00:00 exp 540 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.8655
+2026-10-16T02:43:25.123025+00:00 exp 545 kept=False dev=0.922031 best=0.922031 :: alloc_rel_tol 0.0752->0.0800; alloc_abs_tol 1.0242->0.6925; date_tol_days 0.0000->3.7707
+2026-10-16T02:43:31.944358+00:00 exp 550 kept=False dev=0.922031 best=0.922031 :: overbill_tol 0.0182->0.0489
+2026-10-16T02:43:38.962633+00:00 CHECKPOINT exp=555 heldout=0.654275
+2026-10-16T02:43:38.962921+00:00 exp 555 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.7880; group_date_window_days 45.0000->35.6289
+2026-10-16T02:43:45.738788+00:00 exp 560 kept=False dev=0.922031 best=0.922031 :: overbill_tol 0.0182->0.0050
+2026-10-16T02:43:52.419796+00:00 exp 565 kept=False dev=0.922031 best=0.922031 :: alias-ttd
+2026-10-16T02:44:00.032338+00:00 CHECKPOINT exp=570 heldout=0.654275
+2026-10-16T02:44:00.032639+00:00 exp 570 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.7677; group_date_window_days 45.0000->54.5511; merge_part_min_score 0.4348->0.4515
+2026-10-16T02:44:07.276969+00:00 exp 575 kept=False dev=0.922031 best=0.922031 :: underdelivery_pct 0.8830->0.9061
+2026-10-16T02:44:14.542439+00:00 exp 580 kept=False dev=0.908538 best=0.922031 :: min_score 0.3544->0.2904
+2026-10-16T02:44:21.450583+00:00 CHECKPOINT exp=585 heldout=0.689189
+2026-10-16T02:44:21.450825+00:00 exp 585 kept=False dev=0.912639 best=0.922031 :: min_score 0.3544->0.3928
+2026-10-16T02:44:28.931042+00:00 exp 590 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.7476; merge_part_min_score 0.4348->0.5003
+2026-10-16T02:44:35.961879+00:00 exp 595 kept=False dev=0.882159 best=0.922031 :: min_score 0.3544->0.3137; underdelivery_pct 0.8830->0.8015; overbill_tol 0.0182->0.0130; expand+srch=search
+2026-10-16T02:44:43.198572+00:00 CHECKPOINT exp=600 heldout=0.654275
+2026-10-16T02:44:43.198866+00:00 exp 600 kept=False dev=0.905221 best=0.922031 :: underdelivery_pct 0.8830->0.8150
+2026-10-16T02:44:49.920877+00:00 exp 605 kept=False dev=0.922031 best=0.922031 :: alias+snap inc.
+2026-10-16T02:44:56.755651+00:00 exp 610 kept=False dev=0.922031 best=0.922031 :: w_name 0.6904->0.6789; w_campaign 0.2073->0.2446; w_date 0.3500->0.3011
+2026-10-16T02:45:03.921723+00:00 CHECKPOINT exp=615 heldout=0.654275
+2026-10-16T02:45:03.921991+00:00 exp 615 kept=False dev=0.922031 best=0.922031 :: expand+dt=desktop
+2026-10-16T02:45:10.584278+00:00 exp 620 kept=False dev=0.922031 best=0.922031 :: alias-disney hulu
+2026-10-16T02:45:17.440237+00:00 exp 625 kept=False dev=0.922031 best=0.922031 :: expand+olv=online
+2026-10-16T02:45:24.615054+00:00 CHECKPOINT exp=630 heldout=0.654275
+2026-10-16T02:45:24.615385+00:00 exp 630 kept=False dev=0.922031 best=0.922031 :: overbill_tol 0.0182->0.0174
+2026-10-16T02:45:31.626238+00:00 exp 635 kept=False dev=0.922031 best=0.922031 :: expand+prsp=prospecting
+2026-10-16T02:45:38.822782+00:00 exp 640 kept=False dev=0.922031 best=0.922031 :: w_name 0.6904->0.7756; w_campaign 0.2073->0.2657; w_date 0.3500->0.3382
+2026-10-16T02:45:46.012882+00:00 CHECKPOINT exp=645 heldout=0.654275
+2026-10-16T02:45:46.013166+00:00 exp 645 kept=False dev=0.922031 best=0.922031 :: expand-yt
+2026-10-16T02:45:52.665754+00:00 exp 650 kept=False dev=0.922031 best=0.922031 :: rate_tol 0.0010->0.0010
+2026-10-16T02:45:59.813061+00:00 exp 655 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.8321
+2026-10-16T02:46:06.830318+00:00 CHECKPOINT exp=660 heldout=0.654275
+2026-10-16T02:46:06.830580+00:00 exp 660 kept=False dev=0.922031 best=0.922031 :: vendor_jaccard_min 0.6079->0.5090
+2026-10-16T02:46:13.760822+00:00 exp 665 kept=False dev=0.912639 best=0.922031 :: min_score 0.3544->0.4009
+2026-10-16T02:46:20.942899+00:00 exp 670 kept=False dev=0.922031 best=0.922031 :: alloc_rel_tol 0.0752->0.0421; date_tol_days 0.0000->0.9026
+2026-10-16T02:46:28.023612+00:00 CHECKPOINT exp=675 heldout=0.689189
+2026-10-16T02:46:28.023860+00:00 exp 675 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3790
+2026-10-16T02:46:35.062080+00:00 exp 680 kept=False dev=0.922031 best=0.922031 :: rate_tol 0.0010->0.0015
+2026-10-16T02:46:41.960481+00:00 exp 685 kept=False dev=0.922031 best=0.922031 :: rate_tol 0.0010->0.0012
+2026-10-16T02:46:49.292251+00:00 CHECKPOINT exp=690 heldout=0.654275
+2026-10-16T02:46:49.292498+00:00 exp 690 kept=False dev=0.922031 best=0.922031 :: rate_tol 0.0010->0.0010
+2026-10-16T02:49:18.501011+00:00 exp 695 kept=False dev=0.922031 best=0.922031 :: vendor_jaccard_min 0.6079->0.6528
+2026-10-16T02:49:29.324231+00:00 exp 700 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3233
+2026-10-16T02:49:38.171841+00:00 CHECKPOINT exp=705 heldout=0.654275
+2026-10-16T02:49:38.172250+00:00 exp 705 kept=False dev=0.860484 best=0.922031 :: min_score 0.3544->0.3024; w_date 0.3500->0.3347; overbill_tol 0.0182->0.0050; rate_tol 0.0010->0.0450; group_min_score_factor 0.8196->0.9033; merge_split->False; alloc_rel_tol 0.0752->0.0800; date_tol_days 0.0000->0.0000; expand+disp=display
+2026-10-16T02:49:48.232506+00:00 exp 710 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3612
+2026-10-16T02:49:55.912781+00:00 exp 715 kept=False dev=0.922031 best=0.922031 :: w_name 0.6904->0.6553; w_campaign 0.2073->0.1831; w_date 0.3500->0.3101
+2026-10-16T02:50:03.922161+00:00 CHECKPOINT exp=720 heldout=0.654275
+2026-10-16T02:50:03.922565+00:00 exp 720 kept=False dev=0.922031 best=0.922031 :: expand-tko
+2026-10-16T02:50:11.350482+00:00 exp 725 kept=False dev=0.922031 best=0.922031 :: rate_tol 0.0010->0.0028
+2026-10-16T02:50:18.868112+00:00 exp 730 kept=False dev=0.922031 best=0.922031 :: overbill_tol 0.0182->0.0207
+2026-10-16T02:50:26.414935+00:00 CHECKPOINT exp=735 heldout=0.654275
+2026-10-16T02:50:26.415343+00:00 exp 735 kept=False dev=0.922031 best=0.922031 :: vendor_jaccard_min 0.6079->0.6526
+2026-10-16T02:50:33.649642+00:00 exp 740 kept=False dev=0.922031 best=0.922031 :: overbill_tol 0.0182->0.0308
+2026-10-16T02:50:41.129580+00:00 exp 745 kept=False dev=0.922031 best=0.922031 :: alias+snapchat
+2026-10-16T02:50:48.637558+00:00 CHECKPOINT exp=750 heldout=0.654275
+2026-10-16T02:50:48.637881+00:00 exp 750 kept=False dev=0.922031 best=0.922031 :: w_name 0.6904->0.7343; w_campaign 0.2073->0.2431; w_date 0.3500->0.3500
+2026-10-16T02:50:56.438920+00:00 exp 755 kept=False dev=0.873419 best=0.922031 :: group_min_score_factor 0.8196->0.8611; group_date_window_days 45.0000->39.1045; merge_split->False
+2026-10-16T02:51:03.726935+00:00 exp 760 kept=False dev=0.866285 best=0.922031 :: min_score 0.3544->0.4880
+2026-10-16T02:51:11.208871+00:00 CHECKPOINT exp=765 heldout=0.654275
+2026-10-16T02:51:11.209188+00:00 exp 765 kept=False dev=0.922031 best=0.922031 :: w_name 0.6904->0.6550; w_campaign 0.2073->0.2535; w_date 0.3500->0.3421
+2026-10-16T02:51:18.420836+00:00 exp 770 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.7246
+2026-10-16T02:51:26.107267+00:00 exp 775 kept=False dev=0.873419 best=0.922031 :: group_min_score_factor 0.8196->0.7986; merge_split->False
+2026-10-16T02:51:34.417782+00:00 CHECKPOINT exp=780 heldout=0.654275
+2026-10-16T02:51:34.418084+00:00 exp 780 kept=False dev=0.922031 best=0.922031 :: expand+rtg=retargeting
+2026-10-16T02:51:41.828439+00:00 exp 785 kept=False dev=0.922031 best=0.922031 :: rate_tol 0.0010->0.0010
+2026-10-16T02:51:49.064176+00:00 exp 790 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3284
+2026-10-16T02:51:56.707784+00:00 CHECKPOINT exp=795 heldout=0.654275
+2026-10-16T02:51:56.708140+00:00 exp 795 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3658
+2026-10-16T02:52:04.106200+00:00 exp 800 kept=False dev=0.922031 best=0.922031 :: alias+reddit inc
+2026-10-16T02:52:11.591374+00:00 exp 805 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.7298; group_date_window_days 45.0000->62.8227
+2026-10-16T02:52:18.840868+00:00 CHECKPOINT exp=810 heldout=0.631579
+2026-10-16T02:52:18.841149+00:00 exp 810 kept=False dev=0.849659 best=0.922031 :: min_score 0.3544->0.5537; w_campaign 0.2073->0.2611; rate_tol 0.0010->0.0010; alloc_rel_tol 0.0752->0.0709; alloc_abs_tol 1.0242->0.0000; expand+olv=online
+2026-10-16T02:52:26.155442+00:00 exp 815 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3738
+2026-10-16T02:52:33.758152+00:00 exp 820 kept=False dev=0.922031 best=0.922031 :: underdelivery_pct 0.8830->0.8510
+2026-10-16T02:52:41.072963+00:00 CHECKPOINT exp=825 heldout=0.654275
+2026-10-16T02:52:41.073327+00:00 exp 825 kept=False dev=0.922031 best=0.922031 :: underdelivery_pct 0.8830->0.9005
+2026-10-16T02:52:48.264531+00:00 exp 830 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.8486; merge_part_min_score 0.4348->0.3445
+2026-10-16T02:52:55.458297+00:00 exp 835 kept=False dev=0.922031 best=0.922031 :: underdelivery_pct 0.8830->0.9169
+2026-10-16T02:53:02.847384+00:00 CHECKPOINT exp=840 heldout=0.654275
+2026-10-16T02:53:02.847642+00:00 exp 840 kept=False dev=0.922031 best=0.922031 :: expand-fb
+2026-10-16T02:53:10.010282+00:00 exp 845 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3334
+2026-10-16T02:53:17.073086+00:00 exp 850 kept=False dev=0.922031 best=0.922031 :: underdelivery_pct 0.8830->0.8496
+2026-10-16T02:53:24.743071+00:00 CHECKPOINT exp=855 heldout=0.654275
+2026-10-16T02:53:24.743391+00:00 exp 855 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.7383; group_date_window_days 45.0000->54.7762
+2026-10-16T02:53:31.915349+00:00 exp 860 kept=False dev=0.922031 best=0.922031 :: underdelivery_pct 0.8830->0.8919
+2026-10-16T02:53:39.408778+00:00 exp 865 kept=False dev=0.922031 best=0.922031 :: rate_tol 0.0010->0.0010
+2026-10-16T02:53:46.936549+00:00 CHECKPOINT exp=870 heldout=0.689189
+2026-10-16T02:53:46.936800+00:00 exp 870 kept=False dev=0.912639 best=0.922031 :: min_score 0.3544->0.4145
+2026-10-16T02:53:54.281057+00:00 exp 875 kept=False dev=0.912639 best=0.922031 :: min_score 0.3544->0.3927
+2026-10-16T02:54:01.502482+00:00 exp 880 kept=False dev=0.922031 best=0.922031 :: w_name 0.6904->0.7711; w_campaign 0.2073->0.1476; w_date 0.3500->0.3042
+2026-10-16T02:54:09.490397+00:00 CHECKPOINT exp=885 heldout=0.654275
+2026-10-16T02:54:09.490761+00:00 exp 885 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3253
+2026-10-16T02:54:16.651314+00:00 exp 890 kept=False dev=0.922031 best=0.922031 :: rate_tol 0.0010->0.0010
+2026-10-16T02:54:23.686621+00:00 exp 895 kept=False dev=0.922031 best=0.922031 :: overbill_tol 0.0182->0.0274
+2026-10-16T02:59:03.257381+00:00 CHECKPOINT exp=900 heldout=0.654275
+2026-10-16T02:59:03.258265+00:00 exp 900 kept=False dev=0.922031 best=0.922031 :: alias+microsoft ads
+2026-10-16T02:59:12.122258+00:00 exp 905 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.8233; merge_part_min_score 0.4348->0.4255
+2026-10-16T02:59:20.817057+00:00 exp 910 kept=False dev=0.922031 best=0.922031 :: alloc_rel_tol 0.0752->0.0798
+2026-10-16T02:59:29.223054+00:00 CHECKPOINT exp=915 heldout=0.654275
+2026-10-16T02:59:29.223470+00:00 exp 915 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.7631
+2026-10-16T02:59:36.816058+00:00 exp 920 kept=False dev=0.922031 best=0.922031 :: vendor_jaccard_min 0.6079->0.7095
+2026-10-16T02:59:45.107458+00:00 exp 925 kept=False dev=0.922031 best=0.922031 :: overbill_tol 0.0182->0.0237
+2026-10-16T02:59:53.928151+00:00 CHECKPOINT exp=930 heldout=0.654275
+2026-10-16T02:59:53.928799+00:00 exp 930 kept=False dev=0.922031 best=0.922031 :: expand-prem
+2026-10-16T03:00:01.465215+00:00 exp 935 kept=False dev=0.922031 best=0.922031 :: vendor_jaccard_min 0.6079->0.6156
+2026-10-16T03:00:09.077794+00:00 exp 940 kept=False dev=0.908538 best=0.922031 :: min_score 0.3544->0.3126; w_name 0.6904->0.7482; w_campaign 0.2073->0.3371; underdelivery_pct 0.8830->0.8506; group_min_score_factor 0.8196->0.8696; alloc_rel_tol 0.0752->0.0800; expand+olv=online
+2026-10-16T03:00:17.439372+00:00 CHECKPOINT exp=945 heldout=0.654275
+2026-10-16T03:00:17.439750+00:00 exp 945 kept=False dev=0.922031 best=0.922031 :: expand+dt=desktop
+2026-10-16T03:00:24.978827+00:00 exp 950 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.8168
+2026-10-16T03:00:31.863132+00:00 exp 955 kept=False dev=0.685798 best=0.922031 :: min_score 0.3544->0.6434; w_name 0.6904->0.6895; w_date 0.3500->0.3500; underdelivery_pct 0.8830->0.8784; soft_vendor->False; vendor_jaccard_min 0.6079->0.5543; group_min_score_factor 0.8196->0.7469; merge_part_min_score 0.4348->0.5158; merge_split->False; expand+vid=video; alias+reddit
+2026-10-16T03:00:39.668334+00:00 CHECKPOINT exp=960 heldout=0.654275
+2026-10-16T03:00:39.668739+00:00 exp 960 kept=False dev=0.922031 best=0.922031 :: alias+tiktok ads
+2026-10-16T03:00:47.660422+00:00 exp 965 kept=False dev=0.922031 best=0.922031 :: alloc_rel_tol 0.0752->0.0314
+2026-10-16T03:00:55.852055+00:00 exp 970 kept=False dev=0.922031 best=0.922031 :: alias-hulu
+2026-10-16T03:01:03.459369+00:00 CHECKPOINT exp=975 heldout=0.654275
+2026-10-16T03:01:03.459675+00:00 exp 975 kept=False dev=0.922031 best=0.922031 :: expand+spons=sponsored
+2026-10-16T03:01:10.870968+00:00 exp 980 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.8232; group_date_window_days 45.0000->38.9972
+2026-10-16T03:01:18.243826+00:00 exp 985 kept=False dev=0.922031 best=0.922031 :: alias-facebook
+2026-10-16T03:01:25.908003+00:00 CHECKPOINT exp=990 heldout=0.654275
+2026-10-16T03:01:25.908346+00:00 exp 990 kept=False dev=0.905774 best=0.922031 :: alias-verizon media dsp
+2026-10-16T03:01:33.101624+00:00 exp 995 kept=False dev=0.908538 best=0.922031 :: min_score 0.3544->0.3104
+2026-10-16T03:01:40.026336+00:00 exp 1000 kept=False dev=0.912639 best=0.922031 :: min_score 0.3544->0.4205; w_date 0.3500->0.3012; underdelivery_pct 0.8830->0.9135; vendor_jaccard_min 0.6079->0.5753; group_min_score_factor 0.8196->0.7611; group_date_window_days 45.0000->53.2823; merge_part_min_score 0.4348->0.4371; alloc_rel_tol 0.0752->0.0800; date_tol_days 0.0000->1.6664; expand+conv=conversion
+2026-10-16T03:01:47.513348+00:00 CHECKPOINT exp=1005 heldout=0.654275
+2026-10-16T03:01:47.513715+00:00 exp 1005 kept=False dev=0.922031 best=0.922031 :: expand+coll=collection
+2026-10-16T03:01:54.458151+00:00 exp 1010 kept=False dev=0.922031 best=0.922031 :: soft_vendor->False; vendor_jaccard_min 0.6079->0.7141
+2026-10-16T03:02:01.942215+00:00 exp 1015 kept=False dev=0.922031 best=0.922031 :: underdelivery_pct 0.8830->0.8895
+2026-10-16T03:02:09.669437+00:00 CHECKPOINT exp=1020 heldout=0.654275
+2026-10-16T03:02:09.669733+00:00 exp 1020 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.8403; group_date_window_days 45.0000->62.0741; merge_part_min_score 0.4348->0.4191
+2026-10-16T03:02:16.812474+00:00 exp 1025 kept=False dev=0.922031 best=0.922031 :: alloc_rel_tol 0.0752->0.0589; alloc_abs_tol 1.0242->0.0000
+2026-10-16T03:02:23.701513+00:00 exp 1030 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3360
+2026-10-16T03:02:30.887753+00:00 CHECKPOINT exp=1035 heldout=0.654275
+2026-10-16T03:02:30.888055+00:00 exp 1035 kept=False dev=0.922031 best=0.922031 :: expand+cnsd=consideration
+2026-10-16T03:02:38.201800+00:00 exp 1040 kept=False dev=0.922031 best=0.922031 :: underdelivery_pct 0.8830->0.8841
+2026-10-16T03:02:45.937277+00:00 exp 1045 kept=False dev=0.922031 best=0.922031 :: expand+prosp=prospecting
+2026-10-16T03:02:53.627591+00:00 CHECKPOINT exp=1050 heldout=0.654275
+2026-10-16T03:02:53.627859+00:00 exp 1050 kept=False dev=0.922031 best=0.922031 :: alloc_rel_tol 0.0752->0.0383
+2026-10-16T03:03:00.958070+00:00 exp 1055 kept=False dev=0.912639 best=0.922031 :: min_score 0.3544->0.3994; w_campaign 0.2073->0.1737; w_date 0.3500->0.3500; underdelivery_pct 0.8830->0.8722; overbill_tol 0.0182->0.0084; group_min_score_factor 0.8196->0.8842; group_date_window_days 45.0000->18.9875; expand+prsp=prospecting; alias+verizon media dsp
+2026-10-16T03:03:08.216827+00:00 exp 1060 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3579
+2026-10-16T03:03:15.856056+00:00 CHECKPOINT exp=1065 heldout=0.654275
+2026-10-16T03:03:15.856516+00:00 exp 1065 kept=False dev=0.922031 best=0.922031 :: expand-tko
+2026-10-16T03:03:23.008285+00:00 exp 1070 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3493
+2026-10-16T03:03:30.139999+00:00 exp 1075 kept=False dev=0.922031 best=0.922031 :: rate_tol 0.0010->0.0010
+2026-10-16T03:03:37.284013+00:00 CHECKPOINT exp=1080 heldout=0.654275
+2026-10-16T03:03:37.284321+00:00 exp 1080 kept=False dev=0.922031 best=0.922031 :: group_min_score_factor 0.8196->0.8872
+2026-10-16T03:03:44.620777+00:00 exp 1085 kept=False dev=0.922031 best=0.922031 :: alias+microsoft ads
+2026-10-16T03:03:51.653195+00:00 exp 1090 kept=False dev=0.922031 best=0.922031 :: overbill_tol 0.0182->0.0335
+2026-10-16T03:05:39.388648+00:00 CHECKPOINT exp=1095 heldout=0.654275
+2026-10-16T03:05:39.389516+00:00 exp 1095 kept=False dev=0.873419 best=0.922031 :: group_min_score_factor 0.8196->0.7414; merge_part_min_score 0.4348->0.3341; merge_split->False
+2026-10-16T03:05:47.736565+00:00 exp 1100 kept=False dev=0.922031 best=0.922031 :: vendor_jaccard_min 0.6079->0.6328
+2026-10-16T03:05:55.629464+00:00 exp 1105 kept=False dev=0.922031 best=0.922031 :: min_score 0.3544->0.3448
+2026-10-16T03:06:05.318067+00:00 CHECKPOINT exp=1110 heldout=0.654275
+2026-10-16T03:06:05.318816+00:00 exp 1110 kept=False dev=0.922031 best=0.922031 :: alloc_rel_tol 0.0752->0.0800; alloc_abs_tol 1.0242->0.0000
+2026-10-16T03:06:13.509909+00:00 exp 1115 kept=False dev=0.922031 best=0.922031 :: rate_tol 0.0010->0.0037
+2026-10-16T03:06:18.627305+00:00 signal 15 — will stop after current experiment
+2026-10-16T03:06:20.156045+00:00 DONE experiments=1119 best=0.922031 baseline=0.828341
