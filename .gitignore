@@ -11,3 +11,4 @@ autoresearch/ALERT_STALL
 autoresearch/ALERT_OVERFIT
 data/adversarial/out/
 data/synthetic/out/
+data/sealed_holdout/*/out/

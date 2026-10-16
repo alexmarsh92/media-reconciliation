@@ -23,8 +23,34 @@ sys.path.insert(0, str(ROOT))
 os.chdir(ROOT)
 
 from media_recon.tunables import load as load_tunables, save as save_tunables  # noqa: E402
-from media_recon.eval.composite import run_dev, run_validation  # noqa: E402
-from media_recon.eval.adversarial_eval import evaluate_adversarial  # noqa: E402
+from media_recon.eval.composite import run_dev, run_validation as _run_val_split  # noqa: E402
+from media_recon.eval.adversarial_eval import evaluate_adversarial as _eval_diag  # noqa: E402
+from media_recon.eval.sealed_eval import evaluate_sealed  # noqa: E402
+
+# Restart #4 (jump plan) objective redesign:
+#   SELECT  = mean(DEV composite, VALIDATION composite)  -> keeps can't overfit one generator
+#   GATE    = old adversarial set (data/adversarial), demoted to a diagnostic: must not drop
+#   CHECK   = SEALED held-out v2 (data/sealed_holdout) scored at checkpoints only, never selects
+_run_dev_only = run_dev
+
+
+def run_dev(seeds=None, noise=None) -> dict:  # selection signal (name kept for minimal diff)
+    d, v = _run_dev_only(seeds=seeds), _run_val_split()
+    out = {k: (d[k] + v[k]) / 2 for k in ("composite", "match_recall", "error_recall", "flag_precision")}
+    out.update(dev_composite=d["composite"], val_composite=v["composite"], split="dev+val")
+    return out
+
+
+def run_validation() -> dict:  # non-regression gate: diagnostic adversarial set
+    m = _eval_diag()
+    return {"composite": m["composite"], "match_recall": m["match_recall"],
+            "error_recall": m["error_recall"], "flag_precision": m["error_precision"], "split": "diag_adversarial"}
+
+
+def evaluate_adversarial() -> dict:  # checkpoint: sealed held-out v2
+    m = evaluate_sealed()
+    m["error_precision"] = m["flag_precision"]
+    return m
 
 AR = ROOT / "autoresearch"
 RESULTS = AR / "results.tsv"
@@ -50,7 +76,7 @@ DEV_NOISE = None  # unused; difficulty baked into dev_hard
 # - at most MAX_VENDOR_ALIAS_ADDS vendor-specific alias entries may be added beyond the baseline table
 # - single-string changes (alias +/-) must clear a larger DEV gain to be kept
 # - vendor-alias proposals are sampled far less often than generic abbreviation expansions
-MAX_VENDOR_ALIAS_ADDS = int(os.environ.get("AUTORESEARCH_MAX_ALIAS_ADDS", "3"))
+MAX_VENDOR_ALIAS_ADDS = int(os.environ.get("AUTORESEARCH_MAX_ALIAS_ADDS", "0"))  # resolver replaces per-vendor aliases
 SPECIFIC_MIN_GAIN = float(os.environ.get("AUTORESEARCH_SPECIFIC_MIN_GAIN", "0.005"))
 VAL_TOL = float(os.environ.get("AUTORESEARCH_VAL_TOL", "1e-9"))  # validation must not drop
 BASE_ALIAS_KEYS: set[str] = set()
@@ -188,6 +214,13 @@ def mutate(cfg: dict, rng: random.Random) -> tuple[dict, str]:
         k, v = rng.choice(list(VENDOR_CANDIDATES.items()))
         c.setdefault("vendor_aliases", {})[k] = v
         parts.append(f"alias+{k}")
+    if kind in ("vendor_add", "multi") and rng.random() < 0.6:  # resolver knobs (structural, general)
+        jitter("vendor_affinity_min", 0.3, 0.9, 0.2)
+        if rng.random() < 0.5:
+            jitter("vendor_vote_margin", 0.0, 0.4, 0.2)
+        if rng.random() < 0.1:
+            c["optimal_assign"] = not bool(c.get("optimal_assign", True))
+            parts.append(f"optimal_assign->{c['optimal_assign']}")
     if kind == "vendor_drop" and c.get("vendor_aliases") and rng.random() < 0.5:
         k = rng.choice(list(c["vendor_aliases"].keys()))
         c["vendor_aliases"].pop(k, None)

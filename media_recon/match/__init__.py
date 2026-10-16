@@ -111,6 +111,43 @@ def _within_window(rec: LineItem, io: LineItem, days: int) -> bool:
     return (rec.start - io.end).days <= days and (io.start - rec.end).days <= days
 
 
+def hungarian_max(w: list[list[float]]) -> list[tuple[int, int]]:
+    """Maximum-weight one-to-one assignment (pure-Python Hungarian, rectangular ok). Returns (row, col)."""
+    n, m = len(w), len(w[0]) if w else 0
+    if not n or not m:
+        return []
+    t = n > m
+    if t:
+        w = [list(c) for c in zip(*w)]; n, m = m, n
+    INF = float("inf")
+    u, v, p, way = [0.0] * (n + 1), [0.0] * (m + 1), [0] * (m + 1), [0] * (m + 1)
+    for i in range(1, n + 1):
+        p[0], j0 = i, 0
+        minv, usedc = [INF] * (m + 1), [False] * (m + 1)
+        while True:
+            usedc[j0] = True
+            i0, delta, j1 = p[j0], INF, 0
+            for j in range(1, m + 1):
+                if not usedc[j]:
+                    cur = -w[i0 - 1][j - 1] - u[i0] - v[j]
+                    if cur < minv[j]:
+                        minv[j], way[j] = cur, j0
+                    if minv[j] < delta:
+                        delta, j1 = minv[j], j
+            for j in range(m + 1):
+                if usedc[j]:
+                    u[p[j]] += delta; v[j] -= delta
+                else:
+                    minv[j] -= delta
+            j0 = j1
+            if p[j0] == 0:
+                break
+        while j0:
+            j1 = way[j0]; p[j0] = p[j1]; j0 = j1
+    res = [(p[j] - 1, j - 1) for j in range(1, m + 1) if p[j]]
+    return [(c, r) for r, c in res] if t else res
+
+
 def assign_grouped(records: list[LineItem], ios: list[LineItem]):
     """Grouped assignment.
 
@@ -148,11 +185,26 @@ def assign_grouped(records: list[LineItem], ios: list[LineItem]):
                 used.update(x[1] for x in picks)
     cleaned = {r.record_id: _clean(r) for r in pool if r.record_id not in out}
     pairs = sorted(((score(c, io), rid, io.record_id) for rid, c in cleaned.items() for io in ios), reverse=True)
-    for sc, rid, iid in pairs:
-        if sc < min_score or rid in out or iid in used:
-            continue
-        out[rid] = (iid, sc)
-        used.add(iid)
+    if cfg.get("optimal_assign", True):
+        # Optimal one-to-one assignment over candidate edges within `regret` of each line's best IO
+        # (fixes greedy near-duplicate swaps). Lines left over join groups in pass 2 rather than
+        # being forced onto a worse IO.
+        regret = float(cfg.get("optimal_max_regret", 0.15))
+        rids = [rid for rid in cleaned if rid not in out]
+        iids = [io.record_id for io in ios if io.record_id not in used]
+        sm = {(rid, iid): sc for sc, rid, iid in pairs}
+        best_row = {r: max((sm.get((r, c), 0.0) for c in iids), default=0.0) for r in rids}
+        ok = lambda r, c: sm.get((r, c), 0.0) >= min_score and best_row[r] - sm.get((r, c), 0.0) <= regret
+        for i, j in hungarian_max([[sm[(r, c)] if ok(r, c) else 0.0 for c in iids] for r in rids]):
+            if ok(rids[i], iids[j]):
+                out[rids[i]] = (iids[j], sm[(rids[i], iids[j])])
+                used.add(iids[j])
+    else:
+        for sc, rid, iid in pairs:
+            if sc < min_score or rid in out or iid in used:
+                continue
+            out[rid] = (iid, sc)
+            used.add(iid)
     io_by = {io.record_id: io for io in ios}
     for sc, rid, iid in pairs:
         if rid in out or iid not in used or sc < min_score * factor:
@@ -163,8 +215,83 @@ def assign_grouped(records: list[LineItem], ios: list[LineItem]):
     return out, covered
 
 
+def _compact(v: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", (v or "").lower())
+
+
+def _trigrams(v: str) -> set[str]:
+    c = f"  {_compact(v)} "
+    return {c[i:i + 3] for i in range(len(c) - 2)}
+
+
+def _strip_corp(v: str) -> str:
+    k = re.sub(r"\s+", " ", (v or "").lower().strip(" .,"))
+    k = re.sub(r"\b(inc|llc|ltd|co|corp|corporation|advertising|ads|platforms|media|marketing|solutions|sa|s\.a)\b\.?", "", k)
+    return _compact(k)
+
+
+def name_affinity(v: str, io_vendor: str) -> float:
+    """String-level similarity of a vendor string to an IO vendor (0..1), alias- and typo-tolerant."""
+    if norm_vendor(v) == norm_vendor(io_vendor):
+        return 1.0
+    a, b = _strip_corp(v), _strip_corp(io_vendor)
+    if a and b and (a == b or (min(len(a), len(b)) >= 4 and (a in b or b in a))):
+        return 0.95
+    ca, cb = _compact(v), _compact(io_vendor)
+    if ca and cb and (ca in cb or cb in ca) and min(len(ca), len(cb)) >= 4:
+        return 0.9
+    return jaccard(_trigrams(a or v), _trigrams(b or io_vendor))
+
+
+def resolve_vendors(records: list[LineItem]) -> list[LineItem]:
+    """Entity resolution of invoice/delivery vendor strings onto the IO vendor universe.
+
+    Evidence, strongest first: IO number on the line, string affinity (aliases, legal suffixes,
+    typos via char trigrams), then a document-level vote of placement similarity against each IO
+    vendor's placements (handles rebrands like Twitter -> X with no shared characters).
+    """
+    from dataclasses import replace
+    cfg = _cfg()
+    if not cfg.get("vendor_resolve", True):
+        return records
+    ios = [r for r in records if r.source == "io"]
+    io_vendors = sorted({r.vendor for r in ios})
+    if not io_vendors:
+        return records
+    by_ion = {}
+    for r in ios:
+        if r.io_number:
+            by_ion.setdefault(r.io_number.strip().upper(), set()).add(r.vendor)
+    aff_min = float(cfg.get("vendor_affinity_min", 0.5))
+    vote_margin = float(cfg.get("vendor_vote_margin", 0.1))
+    groups: dict[str, list[LineItem]] = {}
+    for r in records:
+        if r.source != "io":
+            groups.setdefault(r.vendor, []).append(r)
+    mapping = {}
+    for v, rs in groups.items():
+        if v in io_vendors:
+            continue
+        ion = {x for r in rs if r.io_number for x in by_ion.get(r.io_number.strip().upper(), ())}
+        if len(ion) == 1:
+            mapping[v] = next(iter(ion)); continue
+        aff = sorted(((name_affinity(v, iv), iv) for iv in io_vendors), reverse=True)
+        if aff[0][0] >= aff_min and (len(aff) == 1 or aff[0][0] - aff[1][0] >= 0.05):
+            mapping[v] = aff[0][1]; continue
+        vote = []
+        for iv in io_vendors:
+            pls = [io for io in ios if io.vendor == iv]
+            sims = [max(name_sim(_clean(r), io) for io in pls) for r in rs]
+            vote.append((sum(sims) / len(sims) + 0.2 * name_affinity(v, iv), iv))
+        vote.sort(reverse=True)
+        if len(vote) == 1 or vote[0][0] - vote[1][0] >= vote_margin:
+            mapping[v] = vote[0][1]
+    return [replace(r, vendor=mapping[r.vendor]) if r.source != "io" and r.vendor in mapping else r for r in records]
+
+
 def match(records: list[LineItem]) -> tuple[list[Match], dict[str, str]]:
     """Returns one Match per IO line, plus record_id -> io_id for every matched record."""
+    records = resolve_vendors(records)
     if not _cfg().get("enable_grouped", False):
         return _match_1to1(records)
     by_src = {s: [r for r in records if r.source == s] for s in ("io", "invoice", "delivery")}

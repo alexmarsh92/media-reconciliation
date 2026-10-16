@@ -20,6 +20,13 @@ _DEFAULTS = {
     "date_tol_days": 0,
     "fee_lines_as_exceptions": False, # non-media fee lines (ad serving, tech, production) are not IO lines
 
+    # vendor entity resolution + optimal assignment (jump plan)
+    "vendor_resolve": True,
+    "vendor_affinity_min": 0.5,
+    "vendor_vote_margin": 0.1,
+    "optimal_assign": True,
+    "optimal_max_regret": 0.15,
+
     "min_score": 0.45,
     "w_name": 0.70,
     "w_campaign": 0.15,
