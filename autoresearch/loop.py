@@ -43,8 +43,8 @@ HOURS = float(os.environ.get("AUTORESEARCH_HOURS", "8"))
 CHECKPOINT_EVERY_KEPT = int(os.environ.get("AUTORESEARCH_CKPT_KEPT", "3"))
 CHECKPOINT_EVERY_EXP = int(os.environ.get("AUTORESEARCH_CKPT_EXP", "15"))
 STALL_MINUTES = float(os.environ.get("AUTORESEARCH_STALL_MIN", "45"))
-DEV_SEEDS = (1, 2, 3)
-DEV_NOISE = 0.6
+DEV_SEEDS = (1, 2, 3, 4, 5)
+DEV_NOISE = 0.75
 
 EXPAND_CANDIDATES = {
     "mob": "mobile", "mobile": "mobile", "dsktp": "desktop", "dt": "desktop",
@@ -222,7 +222,7 @@ def refresh_morning(baseline: dict, best: dict, best_change: str, heldout_hist: 
     lines += [
         "",
         "## How to read this",
-        "- DEV is the selection signal (messy noise=0.6).",
+        "- DEV is the selection signal (messy noise=0.75).",
         "- Held-out adversarial is scored at checkpoints only and must not guide keeps.",
         "- If DEV rises while held-out falls → see `ALERT_OVERFIT`.",
         "",

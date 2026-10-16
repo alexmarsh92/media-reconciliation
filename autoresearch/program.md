@@ -1,7 +1,7 @@
 # Autoresearch overnight — media reconciliation
 
 ## Objective
-Maximize the **DEV composite** metric on the messy synthetic tier (noise=0.6, seeds 1,2,3):
+Maximize the **DEV composite** metric on the messy synthetic tier (noise=0.75, seeds 1–5):
 
 ```
 composite = harmonic_mean(match_recall, error_recall, flag_precision)
