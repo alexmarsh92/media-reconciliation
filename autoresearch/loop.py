@@ -311,10 +311,13 @@ def main() -> None:
                 try:
                     h = evaluate_adversarial()
                     heldout_val = h["composite"]
-                    entry = {"exp_id": exp_id, **{k: h[k] for k in
-                             ("composite", "match_recall", "error_recall", "flag_precision")}}
-                    # map error_precision name
-                    entry["flag_precision"] = h["error_precision"]
+                    entry = {
+                        "exp_id": exp_id,
+                        "composite": h["composite"],
+                        "match_recall": h["match_recall"],
+                        "error_recall": h["error_recall"],
+                        "flag_precision": h["error_precision"],
+                    }
                     heldout_hist.append(entry)
                     if last_heldout_score is not None and improved and heldout_val < last_heldout_score - 1e-6:
                         note = (f"exp {exp_id}: DEV {best['composite']:.4f}->{dev['composite']:.4f} "
