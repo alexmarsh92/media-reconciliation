@@ -24,3 +24,6 @@ AI media reconciliation (IOs vs invoices vs delivery reports). Synthetic data on
 | PR for review | Open — [PR #1](https://github.com/alexmarsh92/media-reconciliation/pull/1) |
 | Code gardener 2026-10-16: removed dead schema code | Merged — [PR #2](https://github.com/alexmarsh92/media-reconciliation/pull/2) |
 | Overnight autoresearch (hard DEV) best exp 335 | Open — [PR #3](https://github.com/alexmarsh92/media-reconciliation/pull/3); DEV 0.836→0.922, held-out flat 0.689 |
+
+## Agent-friendly guardrails (2026-10-16)
+- `guardrails.json` + `tests/test_guardrails.py` lock sealed sets, restrict sealed readers, block tracked loop state; CI runs pytest. Plan: `agent-friendly-plan.md`. Verify: `.cursor/skills/verify-*/SKILL.md`. Rules: `AGENTS.md`.
