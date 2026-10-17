@@ -69,5 +69,4 @@ if __name__ == "__main__":
         print("| kind | category | count | est. lift if fixed |\n|---|---|---:|---:|")
         for (kind, c), n in tot.most_common():
             print(f"| {kind} | {c} | {n} | {lift(avg, ngm, nge, npe, kind, n / k):+.3f} |")
-        if "-v" in sys.argv[0:1] or True:
-            for x in info[:60]: print("   ", x, file=sys.stderr)
+        for x in info[:60]: print("   ", x, file=sys.stderr)
