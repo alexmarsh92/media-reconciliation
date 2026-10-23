@@ -5,7 +5,7 @@ import pandas as pd
 import streamlit as st
 
 from media_recon.generate.synth import generate
-from media_recon.pipeline import run
+from media_recon.pipeline import inputs_fingerprint, run
 from media_recon.report import LABELS
 
 DATA, OUT = Path("data/synthetic"), Path("data/output")
@@ -22,8 +22,16 @@ with st.sidebar:
         st.success(f"{len(g['records'])} source lines, {len(g['errors'])} planted errors")
     st.write({d: sorted(p.name for p in (DATA / d).iterdir()) for d in ("io", "invoices", "delivery")})
 
-res = run(DATA, OUT)
-s = res["summary"]
+
+
+@st.cache_resource(show_spinner=False)
+def _run_once(fingerprint: str) -> dict:
+    # Rewrite outputs only when the inputs change; filter clicks reuse the cached result,
+    # so reads never race a rewrite of exceptions.xlsx.
+    return run(DATA, OUT)
+
+
+s = _run_once(inputs_fingerprint(DATA))["summary"]
 c = st.columns(5)
 for col, (k, label) in zip(c, [("dollars_at_risk_usd", "Dollars at risk"), ("overbilled_usd", "Overbilled"),
                                 ("undelivered_value_usd", "Undelivered value"),
