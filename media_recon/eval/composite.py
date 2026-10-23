@@ -53,7 +53,8 @@ if __name__ == "__main__":
 
 def run_validation(seeds=None) -> dict:
     """VALIDATION gate split (generate/validation.py). Non-regression gate only."""
-    from ..generate.validation import VAL_SEEDS, generate as vgen
+    from ..generate.validation import VAL_SEEDS
+    from ..generate.validation import generate as vgen
     seeds = seeds or VAL_SEEDS
     per = []
     with tempfile.TemporaryDirectory() as tmp:

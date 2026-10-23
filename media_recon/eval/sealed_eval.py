@@ -1,7 +1,9 @@
 """Score the SEALED held-out v2 (data/sealed_holdout). Checkpoint/merge-gate use ONLY."""
 from __future__ import annotations
 
-import argparse, hashlib, json
+import argparse
+import hashlib
+import json
 from pathlib import Path
 
 from ..pipeline import run

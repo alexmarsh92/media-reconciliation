@@ -4,7 +4,8 @@ from pathlib import Path
 import pytest
 
 from media_recon.eval import evaluate, score
-from media_recon.extract import deterministic as det, llm
+from media_recon.extract import deterministic as det
+from media_recon.extract import llm
 from media_recon.generate.synth import generate
 from media_recon.match import is_makegood, tokens
 from media_recon.pipeline import run
@@ -76,6 +77,7 @@ def test_llm_plugin_parses_model_json(batch):
 
 def test_streamlit_app_renders(monkeypatch, tmp_path):
     import shutil
+
     from streamlit.testing.v1 import AppTest
     shutil.copy(Path(__file__).parent.parent / "app.py", tmp_path / "app.py")
     monkeypatch.chdir(tmp_path)
@@ -85,7 +87,7 @@ def test_streamlit_app_renders(monkeypatch, tmp_path):
 
 def test_dev_hard_split_has_headroom_and_is_disjoint():
     from media_recon.eval.composite import run_dev
-    from media_recon.generate import dev_hard, adversarial
+    from media_recon.generate import adversarial, dev_hard
     assert not {v[0] for v in dev_hard.VENDORS} & {v[0] for v in adversarial.VENDORS}
     assert 909091 not in dev_hard.DEV_SEEDS
     r = run_dev(seeds=dev_hard.DEV_SEEDS[:2])

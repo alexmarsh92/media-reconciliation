@@ -22,10 +22,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 os.chdir(ROOT)
 
-from media_recon.tunables import load as load_tunables, save as save_tunables  # noqa: E402
-from media_recon.eval.composite import run_dev, run_validation as _run_val_split  # noqa: E402
-from media_recon.eval.adversarial_eval import evaluate_adversarial as _eval_diag  # noqa: E402
-from media_recon.eval.sealed_eval import evaluate_sealed  # noqa: E402
+from media_recon.eval.adversarial_eval import evaluate_adversarial as _eval_diag
+from media_recon.eval.composite import run_dev
+from media_recon.eval.composite import run_validation as _run_val_split
+from media_recon.eval.sealed_eval import evaluate_sealed
+from media_recon.tunables import load as load_tunables
+from media_recon.tunables import save as save_tunables
 
 # Restart #4 (jump plan) objective redesign:
 #   SELECT  = mean(DEV composite, VALIDATION composite)  -> keeps can't overfit one generator
@@ -69,7 +71,8 @@ HOURS = float(os.environ.get("AUTORESEARCH_HOURS", "8"))
 CHECKPOINT_EVERY_KEPT = int(os.environ.get("AUTORESEARCH_CKPT_KEPT", "3"))
 CHECKPOINT_EVERY_EXP = int(os.environ.get("AUTORESEARCH_CKPT_EXP", "15"))
 STALL_MINUTES = float(os.environ.get("AUTORESEARCH_STALL_MIN", "45"))
-from media_recon.generate.dev_hard import DEV_SEEDS  # noqa: E402  hard DEV split
+from media_recon.generate.dev_hard import DEV_SEEDS
+
 DEV_NOISE = None  # unused; difficulty baked into dev_hard
 
 # Over-specificity guards (restart #3, after exp-47 overfit):
