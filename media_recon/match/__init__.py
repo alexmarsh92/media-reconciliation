@@ -6,7 +6,7 @@ import re
 from ..schema import LineItem, Match
 from ..tunables import load as load_tunables
 
-MAKEGOOD = re.compile(r"(^|[\s_\-])(mg|makegood|make good|bonus|adu|added.?value|av)($|[\s_\-])", re.I)
+MAKEGOOD = re.compile(r"(^|[\s_\-])(mg|makegood|make good|bonus|adu|added.?value|av)($|[\s_\-])", re.IGNORECASE)
 
 
 def _cfg():
@@ -91,7 +91,7 @@ def assign(records: list[LineItem], ios: list[LineItem]) -> dict[str, tuple[str,
     return out
 
 
-FEE = re.compile(r"\b(fee|fees|serving|production|platform tech|tech fee|service charge)\b", re.I)
+FEE = re.compile(r"\b(fee|fees|serving|production|platform tech|tech fee|service charge)\b", re.IGNORECASE)
 SPLIT_SUFFIX = re.compile(r"\s*\(\d+\s*/\s*\d+\)\s*$")
 MERGE_SEP = re.compile(r"\s+&\s+|\s+\+\s+")
 

@@ -1,12 +1,24 @@
 """Error analysis: categorize match misses, missed errors and false flags on a split."""
 from __future__ import annotations
-import json, sys, tempfile
+
+import json
+import sys
+import tempfile
 from collections import Counter
 from pathlib import Path
-from media_recon.pipeline import run
+
 from media_recon.eval import score
 from media_recon.eval.composite import composite
-from media_recon.match import norm_vendor, vendors_compatible, score as mscore, is_fee, is_makegood, _clean
+from media_recon.match import (
+    _clean,
+    is_fee,
+    is_makegood,
+    norm_vendor,
+    vendors_compatible,
+)
+from media_recon.match import score as mscore
+from media_recon.pipeline import run
+
 
 def analyze(data: Path, gold: dict):
     res = run(data, data / "out")

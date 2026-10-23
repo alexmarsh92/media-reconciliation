@@ -1,5 +1,4 @@
 """Reruns (e.g. filter clicks) must not rewrite outputs; only input changes do."""
-import os
 from pathlib import Path
 
 import pytest
