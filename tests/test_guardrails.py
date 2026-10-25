@@ -4,14 +4,18 @@
 2. Only the listed checkpoint modules may reference sealed data; everything else scores dev/validation.
 3. Loop runtime artifacts (PID files, logs, state) may not be newly tracked by git.
 """
-import fnmatch, hashlib, json, re, subprocess
+import fnmatch
+import hashlib
+import json
+import re
+import subprocess
 from pathlib import Path
 
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 CFG = json.loads((ROOT / "guardrails.json").read_text())
-SEALED_TOKEN = re.compile(r"sealed", re.I)
+SEALED_TOKEN = re.compile(r"sealed", re.IGNORECASE)
 
 
 def _tracked():
